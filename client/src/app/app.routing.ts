@@ -7,11 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.component';
 
 const routes: Routes =[
-   /*{
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-  },*/
+  },
   {
     path: '',
     component: AdminLayoutComponent,

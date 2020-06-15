@@ -9,6 +9,7 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { ProductComponent } from '../../components/product/product.component';
 import { ProductListComponent } from '../../components/product/product-list/product-list.component';
 import { ShoppingCartComponent } from '../../components/shopping-cart/shopping-cart.component';
+import { OrdersUserComponent } from '../../components/orders-user/orders-user.component';
 import { ProductFilterComponent } from '../../components/product/product-filter/product-filter.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -33,6 +34,9 @@ const routes: Routes = [
     },
     {
         path: 'shoppingCart', component: ShoppingCartComponent
+    },
+    {
+        path: 'ordersUser', component: OrdersUserComponent
     },
     {
         path: 'userprofile', component: UserprofileComponent,canActivate:[AuthGuard]

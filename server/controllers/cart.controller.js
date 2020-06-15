@@ -1,7 +1,7 @@
 const Cart = require("../models/cart.model");
 const Order = require("../models/order.model");
 const uuid = require('node-uuid');
-
+const Product = require("../models/product.model")
 async function index(req, res, next) {
     var userId = await getUserId(req);
 
@@ -86,17 +86,36 @@ async function payment(req, res, next) {
 }
 
 async function destroy(req, res, next) {
-    var userId = await getUserId(req);
+    // var userId = await getUserId(req);
 
-    Cart.deleteOne(
-        { _id: req.params.id, userId }
-    ).then(resp => {
-        if (!!resp) {
-            res.json({status: true, error: null});
+    // Cart.deleteOne(
+    //     { _id: req.params.id, userId }
+    // ).then(resp => {
+    //     if (!!resp) {
+    //         res.json({status: true, error: null});
+    //     }
+    // }).catch(error => {
+    //     res.status(433).json({status: false, data: null, error: error.toString()});
+    // })
+        var userId = await getUserId(req);
+
+    console.log(req.params.id); //productID
+    let product = await Product.findById(req.params.id)
+
+    let UserCart = await Cart.find({ userId: userId });
+
+    console.log(UserCart) 
+    let cart;
+    UserCart.forEach(uc => {
+        console.log(uc.product, product)
+        if(uc.product._id == product.id) {
+            cart = uc;
         }
-    }).catch(error => {
-        res.status(433).json({status: false, data: null, error: error.toString()});
     })
+    await Cart.findByIdAndDelete(cart.id);
+
+    // let removeCart = await Cart.findByIdAndDelete("5ee6ed0034414c4010540231");
+    res.send("Delete Success!")
 }
 
 async function getUserId(req) {

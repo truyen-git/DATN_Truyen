@@ -10,8 +10,7 @@ import { CartService } from '../../../shared/cart.service';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-
-
+  public display: boolean;
   cartItems=[];
 
 	cartTotal = 0
@@ -21,6 +20,10 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
     this.handleSubscription();
     this.loadCartItems();
+  }
+
+  payChange(){
+    this.display = true;
   }
 
   handleSubscription() {
@@ -44,5 +47,7 @@ export class ShoppingCartComponent implements OnInit {
       this.cartTotal += (item.product.price)
     })
   }
+
+  
 
 }

@@ -20,7 +20,7 @@
 					<div class="has-border list-bottom-item dropdown" *ngIf="userDetails">
 						<img src="../../../../assets/img/user.png" alt="" class="avatar">{{userDetails.fullName.split(' ')[0]}} {{userDetails.fullName.split(' ')[1]}}
 						<div class="dropdown-content">
-							<a href="" class="d-block">Hóa đơn mua hàng</a>
+							<a href="" class="d-block" routerLink="/ordersUser" >Hóa đơn mua hàng</a>
 							<a href="" class="d-block" (click)="onLogout()">Logout</a>
 							
 						</div>

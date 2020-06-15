@@ -23,14 +23,20 @@
 					</table>
 				</div>
 			</div>
-			<div class="col-md-3" style="float: right; padding: 50px 0px 0px 90px;">
+			<div class="col-md-3" style="float: right; padding: 50px 0px 0px 90px;" >
 				<div>
 					<p style="font-size: 25px; font-weight: bold;">{{ cartTotal | currency:'VND' }}</p>
 				</div>
-				<div>
-					<button type="button" class="btn btn-primary" >Thanh toán</button>
+				<div *ngIf="!display">
+					<button type="button" class="btn btn-primary" (click)="payChange()" >Thanh toán</button>
+				</div>
+				<div *ngIf="display">
+					<img style="width: 110%;" src="../../../../assets/img/QRMOMO1.PNG" alt="">
+					<p style="text-align: center; margin-top: 10px; font-size: 18px;">Vui lòng chuyển tổng số tiền: <strong>{{ cartTotal | currency:'VND' }} </strong>bằng tài khoản MOMO của bạn.</p>
+					<p style="text-align: center; margin: 10px 0px 100px 0px; font-size: 18px;">Xin chân thành cám ơn!</p>
 				</div>
 			</div>
+			
 		</div>
 		
 	</div>

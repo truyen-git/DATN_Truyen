@@ -14,6 +14,7 @@ import { BodyComponent } from '../../components/body/body.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { UserprofileComponent } from '../../components/userprofile/userprofile.component';
+import { OrdersUserComponent } from '../../components/orders-user/orders-user.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -25,7 +26,7 @@ import { HomeLayoutRoutingModule } from './home-layout-routing.module';
 
 @NgModule({
   declarations: [LogInComponent,UserComponent, SignUpComponent,HeaderComponent,BodyComponent,HomeComponent,FooterComponent,UserprofileComponent,
-  ProductComponent,ProductListComponent,ProductCardComponent,ProductFilterComponent,ShoppingCartComponent,ShoppingItemComponent],
+  ProductComponent,ProductListComponent,ProductCardComponent,ProductFilterComponent,ShoppingCartComponent,ShoppingItemComponent,OrdersUserComponent],
   imports: [
     CommonModule,
     HomeLayoutRoutingModule,

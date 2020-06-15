@@ -4,5 +4,5 @@
 {{ cartItems.quantity }}
 </td> -->
 <td class="align-right">{{cartItems.product.price |  currency:'VND' }}</td>
-<td><button (click)="remove()" type=""><i class="fa fa-times del_cart"></i></button></td>
+<td><button (click)="remove(cartItems.product._id)" type=""><i class="fa fa-times del_cart"></i></button></td>
 

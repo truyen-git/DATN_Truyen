@@ -13,10 +13,15 @@ export class ShoppingItemComponent implements OnInit {
 	@Input() cartItems: any
   constructor(private cartService : CartService) { }
 
-  ngOnInit(): void {
-  		
-  	}
- 	remove(){
- 		this.cartService.RemoveProductFromCart();
+	  ngOnInit(): void {
+	  		
+	  	}
+ 	remove(productId){
+     console.log(productId)
+ 		this.cartService.RemoveProductFromCart(productId).subscribe(rs => {
+       console.log(rs)
+     }, (err) => {
+       console.log(err)
+     });
  	}
 }

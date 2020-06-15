@@ -40,6 +40,7 @@ import { ShoppingCartComponent } from './main/components/shopping-cart/shopping-
 import { ShoppingItemComponent } from './main/components/shopping-cart/shopping-item/shopping-item.component';
 import { UserProfileComponent } from './admin/user-profile/user-profile.component';
 import { UserprofileComponent } from './main/components/userprofile/userprofile.component';
+import { OrdersUserComponent } from './main/components/orders-user/orders-user.component';
 import { TableListComponent } from './admin/table-list/table-list.component';
 import { TypographyComponent } from './admin/typography/typography.component';
 import { IconsComponent } from './admin/icons/icons.component';
