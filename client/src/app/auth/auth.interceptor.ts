@@ -11,7 +11,12 @@ export class AuthInterceptor implements HttpInterceptor {
     constructor(private userService : UserService,private router : Router){}
 
     intercept(req: HttpRequest<any>, next: HttpHandler) {
-
+        // req = req.clone({
+        //     setHeaders: {
+        //       Authorization: `Bearer ${this.userService.getToken()}`
+        //     }
+        //   });
+        //   return next.handle(req);
         if (req.headers.get('noauth'))
             return next.handle(req.clone());
         else {

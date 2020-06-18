@@ -7,14 +7,5 @@ export const environment = {
   production: false,
   apiBaseUrl: 'http://localhost:3000/api',
   apiUrl: 'http://localhost:3000/api'
-  /*firebase: {
-  apiKey: "AIzaSyARLtqK_fQ6nge1qTY5ZlW0_5ug3zR90Nc",
-  authDomain: "my-project-1574759369616.firebaseapp.com",
-  databaseURL: "https://my-project-1574759369616.firebaseio.com",
-  projectId: "my-project-1574759369616",
-  storageBucket: "my-project-1574759369616.appspot.com",
-  messagingSenderId: "513215499077",
-  appId: "1:513215499077:web:64d8953f34d7ab98878c2c",
-  measurementId: "G-Y0B0HYQ2JK"
-  }*/
+  
 };

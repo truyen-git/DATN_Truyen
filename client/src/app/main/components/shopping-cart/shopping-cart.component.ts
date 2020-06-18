@@ -48,6 +48,16 @@ export class ShoppingCartComponent implements OnInit {
     })
   }
 
+  remove(productId){
+    console.log(productId)
+    this.cartService.RemoveProductFromCart(productId).subscribe(rs => {
+      console.log(this.cartItems)
+      this.cartItems = this.cartItems.filter(e => e.product._id != productId);
+    }, (err) => {
+      console.log(err)
+    });
+  }
+
   
 
 }

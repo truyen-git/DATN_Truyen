@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../shared/user.service';
+import { User } from '../../main/models/user.model';
 
 @Component({
   selector: 'app-table-list',
@@ -6,10 +8,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./table-list.component.css']
 })
 export class TableListComponent implements OnInit {
-
-  constructor() { }
+     userList : User[] = [];
+  constructor(private userService : UserService) { }
 
   ngOnInit() {
+  	this.loadUsers();
+  }
+
+  loadUsers() {
+    this.userService.getUsers().subscribe((users: any) => {
+      this.userList = users.data;
+      console.log(users);
+    }, (err) => {
+      console.log(err)
+    })
   }
 
 }

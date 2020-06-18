@@ -27,7 +27,7 @@ export class CartService {
   }
 
   RemoveProductFromCart(productId): Observable<any> {
-    return this.http.delete(`http://localhost:3000/api/cart/${productId}`);
+    return this.http.delete(`${environment.apiBaseUrl}/cart/${productId}`);
   }
 
   

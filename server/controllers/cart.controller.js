@@ -1,16 +1,17 @@
 const Cart = require("../models/cart.model");
 const Order = require("../models/order.model");
+const Product = require("../models/product.model");
 const uuid = require('node-uuid');
-const Product = require("../models/product.model")
+
 async function index(req, res, next) {
     var userId = await getUserId(req);
 
     Cart.find({ userId })
         .then(resp => {
-            res.json({status: true, data: resp, error: null});
+            res.json({ status: true, data: resp, error: null });
         })
         .catch(error => {
-            res.status(433).json({status: false, data: null, error: error.toString()});
+            res.status(433).json({ status: false, data: null, error: error.toString() });
         });
 }
 
@@ -39,16 +40,16 @@ async function store(req, res, next) {
         existsProductInCart = (resp.length > 0);
     });
 
-    await Order.find({ userId, "products": { $elemMatch: { _id: product._id }  } }).then(resp => {
+    await Order.find({ userId, "products": { $elemMatch: { _id: product._id } } }).then(resp => {
         existsProductInOrder = (resp.length > 0);
     });
 
     if (existsProductInCart || existsProductInOrder) {
-        return res.status(433).json({status: false, error: "Product have buy"});
+        return res.status(433).json({ status: false, error: "Product have buy" });
     }
 
     Cart.create(cartData).then(resp => {
-        res.json({status: true, data: resp, error: null});
+        res.json({ status: true, data: resp, error: null });
     }).catch(error => {
         next(err);
     });
@@ -59,7 +60,7 @@ async function payment(req, res, next) {
     var notExistsUserId = (!!!userId);
 
     if (notExistsUserId) {
-        return res.status(433).json({status: false});
+        return res.status(433).json({ status: false });
     }
 
     var carts = null;
@@ -82,40 +83,34 @@ async function payment(req, res, next) {
         await Cart.deleteMany({ userId });
     }
 
-    return res.json({status: true});
+    return res.json({ status: true });
 }
 
 async function destroy(req, res, next) {
-    // var userId = await getUserId(req);
-
-    // Cart.deleteOne(
-    //     { _id: req.params.id, userId }
-    // ).then(resp => {
-    //     if (!!resp) {
-    //         res.json({status: true, error: null});
-    //     }
-    // }).catch(error => {
-    //     res.status(433).json({status: false, data: null, error: error.toString()});
-    // })
+    try {
         var userId = await getUserId(req);
 
-    console.log(req.params.id); //productID
-    let product = await Product.findById(req.params.id)
+        // console.log(req.params.id); //productID
+        let product = await Product.findById(req.params.id)
 
-    let UserCart = await Cart.find({ userId: userId });
+        let UserCart = await Cart.find({ userId: userId });
 
-    console.log(UserCart) 
-    let cart;
-    UserCart.forEach(uc => {
-        console.log(uc.product, product)
-        if(uc.product._id == product.id) {
-            cart = uc;
-        }
-    })
-    await Cart.findByIdAndDelete(cart.id);
+        // console.log(UserCart) 
+        let cart;
+        UserCart.forEach(uc => {
+            console.log(uc.product, product)
+            if (uc.product._id == product.id) {
+                cart = uc;
+            }
+        })
+        await Cart.findByIdAndDelete(cart.id);
 
-    // let removeCart = await Cart.findByIdAndDelete("5ee6ed0034414c4010540231");
-    res.send("Delete Success!")
+        // let removeCart = await Cart.findByIdAndDelete("5ee6ed0034414c4010540231");
+        res.send();
+
+    } catch (ex) {
+        console.log(ex);
+    }
 }
 
 async function getUserId(req) {
@@ -130,10 +125,7 @@ async function getUserId(req) {
     if (existsUser) {
         userId = req._id;
         if (existsGuest) {
-            await Cart.updateMany(
-                { userId: uuidUser[1] },
-                { $set: { userId: userId } }
-            )
+            await Cart.updateMany({ userId: uuidUser[1] }, { $set: { userId: userId } })
         }
     } else if (notExistsGuest) {
         if (existsGuest) {

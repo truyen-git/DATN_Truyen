@@ -18,10 +18,10 @@ export class ShoppingItemComponent implements OnInit {
 	  	}
  	remove(productId){
      console.log(productId)
- 		this.cartService.RemoveProductFromCart(productId).subscribe(rs => {
+    this.cartService.RemoveProductFromCart(productId).subscribe(rs => {
        console.log(rs)
      }, (err) => {
        console.log(err)
      });
- 	}
+  }
 }

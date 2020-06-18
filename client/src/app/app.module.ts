@@ -17,6 +17,8 @@ import { UserService } from './shared/user.service';
 /*import { UserfbService } from './shared/userfb.service';*/
 import { ProductService } from './shared/product.service';
 import { MessengerService } from './shared/messenger.service';
+import { CartService } from './shared/cart.service';
+import { OrderService } from './shared/order.service';
 
 
 import { AuthGuard } from './auth/auth.guard';
@@ -86,7 +88,7 @@ import { AdminProductEditComponent } from './admin/admin-product-edit/admin-prod
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  },AuthGuard,UserService,/*UserfbService,*/ProductService,MessengerService/*,
+  },AuthGuard,UserService,/*UserfbService,*/CartService,OrderService,ProductService,MessengerService/*,
   {
       provide: AuthHttp,
       useFactory: getAuthHttp,

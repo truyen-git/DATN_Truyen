@@ -1,25 +1,55 @@
 
 <div class="main-content">
   <div class="container-fluid">
-      <div class="card card-plain">
-          <div class="card-header card-header-danger">
-              <h4 class="card-title">Material Design Icons</h4>
-              <p class="card-category">Handcrafted by our friends from
-                  <a target="_blank" href="https://design.google.com/icons/">Google</a>
-              </p>
-          </div>
-          <div class="row">
-              <div class="col-md-12">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-danger ">
+                      <h4 class="card-title ">Danh sách hóa đơn</h4>
+                  </div>
                   <div class="card-body">
-                      <div class="iframe-container d-none d-lg-block">
-                          <iframe src="https://design.google.com/icons/">
-                              <p>Your browser does not support iframes.</p>
-                          </iframe>
-                      </div>
-                      <div class="col-md-12 d-none d-sm-block d-md-block d-lg-none d-block d-sm-none text-center ml-auto mr-auto">
-                          <h5>The icons are visible on Desktop mode inside an iframe. Since the iframe is not working on Mobile and Tablets please visit the icons on their original page on Google. Check the
-                              <a href="https://design.google.com/icons/" target="_blank">Material Icons</a>
-                          </h5>
+                      <div class="table-responsive">
+                          <table class="table">
+                              <thead class=" text-primary">
+                                  <th>
+                                      ID
+                                  </th>
+                                
+                                  <th>
+                                      UserID
+                                  </th>
+                                  <th>
+                                      Time updated
+                                  </th>
+                                  <th>Time created</th>
+                                  <th>Status</th>
+                                  
+                                  
+                              </thead>
+                              <tbody *ngFor= "let order of orderList">
+                                  <tr>
+                                      <td>
+                                          {{order._id}}
+                                      </td>
+                                      
+                                      <td>
+                                          {{order.userId}}
+                                      </td>
+                                      <td>
+                                          {{order.updated_at}}
+                                      </td>
+                                      <td>{{order.created_at}}</td>
+                                      <td>{{order.status}}</td>
+                                      <td>
+                                      
+                                        <a href="" style="font-size: 20px; margin-right: 30px;"><i class="fa fa-trash-o"></i></a>
+                                        <button type="button" class="btn btn-danger" style="margin-right: 30px;">Confim</button>
+                                        <button type="button" class="btn btn-warning">View</button>
+                                      </td>
+                                      
+                                  </tr>
+                              </tbody>
+                          </table>
                       </div>
                   </div>
               </div>

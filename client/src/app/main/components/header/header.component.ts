@@ -4,7 +4,6 @@ import { UserService } from '../../../shared/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { FirebaseUserModel } from '../../models/user.model';
 import { Router } from "@angular/router";
 
 @Component({

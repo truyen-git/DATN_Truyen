@@ -5,7 +5,33 @@
               <div class="card">
                   <div class="card-header card-header-danger ">
                       <h4 class="card-title ">Danh sách khách hàng</h4>
-                      <button type="button" class="btn btn-success ">Thêm mới</button>
+                      
+                      <div class="container" *ngIf="change" style="background-color: #ffffff;">
+                        <form>
+                          <div class="form-group">
+                            <label  class="label-text">Name:</label>
+                            <input type="text" class="form-control" >
+                          </div>
+                          <div class="form-group">
+                            <label class="label-text">Author:</label>
+                            <input type="text" class="form-control" id="">
+                          </div>
+                          <div class="form-group">
+                            <label class="label-text">Descripton:</label>
+                            <input type="text" class="form-control" id="">
+                          </div>
+                          <div class="form-group">
+                            <label class="label-text">Price:</label>
+                            <input type="text" class="form-control" id="">
+                          </div>
+                          <div class="form-group">
+                            <label class="label-text">ImageUrl:</label>
+                            <input type="text" class="form-control" id="">
+                          </div>
+                        </form>
+                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;">Creat</button>
+                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;">Cancel</button>
+                      </div>
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
@@ -20,24 +46,19 @@
                                   <th>
                                       Email
                                   </th>
-                                  <th>
-                                      Password
-                                  </th>
+                                
                                   
                               </thead>
-                              <tbody>
+                              <tbody *ngFor= "let user of userList">
                                   <tr>
                                       <td>
-                                          1
+                                          {{user._id}}
                                       </td>
                                       <td>
-                                          Dakota Rice
+                                          {{user.fullName}}
                                       </td>
                                       <td>
-                                          Niger
-                                      </td>
-                                      <td>
-                                          Oud-Turnhout
+                                          {{user.email}}
                                       </td>
                                       <td>
                                         <a href="" routerLink="" style="font-size: 20px; margin-right: 10px;"><i class="fa fa-pencil-square-o"></i></a>

@@ -17,8 +17,12 @@
 
 						<tbody>
 							<tr class="table-data-animation" *ngFor="let item of cartItems">
-								<app-shopping-item [cartItems]="item"></app-shopping-item>
-							</tr>
+                                <!-- <app-shopping-item [cartItems]="item"></app-shopping-item> -->
+                                <td style="width: 60px;"><img style="width: 200px;" [src]="item.product.imageUrl" class="avatar"></td>
+                                <td>{{ item.product.name }}</td>
+                                <td class="align-right">{{item.product.price | currency:'VND' }}</td>
+                                <td><button (click)="remove(item.product._id)" type=""><i class="fa fa-times del_cart"></i></button></td>
+                            </tr>
 						</tbody>
 					</table>
 				</div>

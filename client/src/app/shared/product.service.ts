@@ -14,8 +14,12 @@ export class ProductService {
   	return this.http.get(`${environment.apiBaseUrl}/products`);
   }
 
-  getProductById() {
-  	return this.http.get(`${environment.apiBaseUrl}/products/:id`);
+  getProductByAdmin() {
+  	return this.http.get(`${environment.apiBaseUrl}/admin/products`);
+  }
+
+  deleteProductByAdmin(productId){
+  	return this.http.delete(`${environment.apiBaseUrl}/admin/products/${productId}`);
   }
 }
   
