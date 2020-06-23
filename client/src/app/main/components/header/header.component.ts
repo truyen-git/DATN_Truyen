@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/user.service';
 /*import { UserfbService } from '../../../shared/userfb.service';*/
+import { CartItem } from '../../models/cart-item';
+import { CartService } from '../../../shared/cart.service';
+
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -14,11 +17,13 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit {
 public userDetails;
 public currentUser : any = {};
+cartItems=[];
+cartQuantity = 0;
   
-  constructor(private userService: UserService, /*private userfbService: UserfbService,*/ private router: Router) { }
+constructor(private userService: UserService,private cartService: CartService, /*private userfbService: UserfbService,*/ private router: Router) { }
 
-  ngOnInit() {
-    if(this.userService.getToken() !== '') {
+ngOnInit() {
+  if(this.userService.getToken() !== '') {
     this.userService.getUserProfile().subscribe(
       res => {
         this.userDetails = res['user'];
@@ -27,14 +32,32 @@ public currentUser : any = {};
         console.log(err);
         
       }
-    );
+      );
+
+
   }
-    /*this.userfbService.getCurrentUser().then(profile => this.currentUser = profile)
-        .catch(() => this.currentUser = {});*/
+  /*this.userfbService.getCurrentUser().then(profile => this.currentUser = profile)
+  .catch(() => this.currentUser = {});*/
+  this.loadCartItems();
+  
 }
 onLogout(){
-    this.userService.deleteToken();
-    this.router.navigate(['/body']);
-  }
+  this.userService.deleteToken();
+  this.router.navigate(['/body']);
+}
+
+loadCartItems() {
+  this.cartService.getCartItems().subscribe((items: any) => {
+    this.cartItems = items.data;
+    this.calcCartTotal();
+  })
+}
+
+calcCartTotal() {
+  this.cartQuantity = 0
+  this.cartItems.forEach(item => {
+    this.cartQuantity += (item.quantity)
+  })
+}
 }
 

@@ -18,8 +18,21 @@ export class ProductService {
   	return this.http.get(`${environment.apiBaseUrl}/admin/products`);
   }
 
-  deleteProductByAdmin(productId){
+  /*deleteProductByAdmin(productId){
   	return this.http.delete(`${environment.apiBaseUrl}/admin/products/${productId}`);
+  }*/
+
+  addProduct(product) {
+    return this.http.post(`http://localhost:3000/product/create`, product)
   }
+
+  editProduct(product, productId) {
+    return this.http.put(`http://localhost:3000/product/${productId}`, product)
+  }
+
+  deleteProduct(productId) {
+    return this.http.delete(`http://localhost:3000/product/${productId}`);
+  }
+
 }
   

@@ -7,58 +7,74 @@
               <div class="card">
                   <div class="card-header card-header-danger ">
                       <h4 class="card-title ">Danh sách khóa học</h4>
+                      <button class="btn btn-default" style="background-color: #ffffff;" (click)="changeTab()">
+                        <p style="color: #000000; margin-bottom: 0px;">Thêm +</p>
+                      </button>
                       <div class="container" *ngIf="change && !editproduct" style="background-color: #ffffff;">
-                        <form>
+                        <form [formGroup]="addProductFrm" >
                           <div class="form-group">
                             <label  class="label-text">Name:</label>
-                            <input type="text" class="form-control" >
+                            <input type="text" class="form-control" formControlName="name">
                           </div>
                           <div class="form-group">
                             <label class="label-text">Author:</label>
-                            <input type="text" class="form-control" id="">
+                            <input type="text" class="form-control" id="" formControlName="author">
                           </div>
                           <div class="form-group">
                             <label class="label-text">Descripton:</label>
-                            <input type="text" class="form-control" id="">
+                            <input type="text" class="form-control" id="" formControlName="description">
                           </div>
                           <div class="form-group">
                             <label class="label-text">Price:</label>
-                            <input type="text" class="form-control" id="">
+                            <input type="text" class="form-control" id="" formControlName="price">
                           </div>
-                          <div class="form-group">
+                          <div class="form-row">
                             <label class="label-text">ImageUrl:</label>
-                            <input type="text" class="form-control" id="">
+                            <div class="">
+                                <input type="file" class="form-control input-file-upload customize-file-input" id="product_image" formControlName="imageProduct" accept="image/png, image/jpeg" (change)="onFileChange($event)"/>
+                                <!-- <div [innerHTML]="uploadError" class="error"></div> -->
+                                <div *ngIf="imagePath">
+                                  <br />
+                                  <img [src]="imagePath" width="100px">
+                                </div>
+                              </div>
                           </div>
                         </form>
-                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;">Creat</button>
+                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;" (click)="createProduct()">Create</button>
                         <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;" (click)="changeTab()">Cancel</button>
                       </div>
                       <div class="container" *ngIf="editproduct" style="background-color: #ffffff;">
-                        <form>
+                        <form [formGroup]="editProductFrm" >
                           <div class="form-group">
                             <label  class="label-text">Name:</label>
-                            <input type="text" class="form-control" value="{{product.name}}">
-
+                            <input type="text" class="form-control" formControlName="name">
                           </div>
                           <div class="form-group">
                             <label class="label-text">Author:</label>
-                            <input type="text" class="form-control" value="{{product.author}}">
+                            <input type="text" class="form-control" id="" formControlName="author">
                           </div>
                           <div class="form-group">
                             <label class="label-text">Descripton:</label>
-                            <input type="text" class="form-control" value="{{product.description}}">
+                            <input type="text" class="form-control" id="" formControlName="description">
                           </div>
                           <div class="form-group">
                             <label class="label-text">Price:</label>
-                            <input type="text" class="form-control" value="{{product.price}}">
+                            <input type="text" class="form-control" id="" formControlName="price">
                           </div>
-                          <div class="form-group">
+                          <div class="form-row">
                             <label class="label-text">ImageUrl:</label>
-                            <input type="text" class="form-control" value="{{product.imageUrl}}">
+                            <div class="">
+                                <input type="file" class="form-control input-file-upload customize-file-input" id="product_image" formControlName="imageProduct" accept="image/png, image/jpeg" (change)="onFileChangeEdit($event)"/>
+                                <!-- <div [innerHTML]="uploadError" class="error"></div> -->
+                                <div *ngIf="imagePath">
+                                  <br />
+                                  <img [src]="imagePath" width="100px">
+                                </div>
+                              </div>
                           </div>
                         </form>
-                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;">Update</button>
-                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;" (click)="editProduct()">Cancel</button>
+                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;" (click)="saveProductEdit()">Update</button>
+                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;" (click)="closeEdit()">Cancel</button>
                       </div>
                   </div>
                   <div class="card-body">
@@ -96,10 +112,10 @@
                                           {{product.description}}
                                       </td>
                                       <td>{{product.price}}</td>
-                                      <td>{{product.imageUrl}}</td>
+                                      <td><img style="width: 160px;" [src]="product.imageUrl" class="avatar"></td>
                                       <td>
-                                        <a  (click)="changeTab()" style="font-size: 20px;"><i class="fa fa-plus-square-o"></i></a>
-                                        <a (click)="editProduct(product)"  style="font-size: 20px; margin-right: 10px;"><i class="fa fa-pencil-square-o"></i></a>
+                                        <!-- <a  (click)="changeTab()" style="font-size: 20px;"><i class="fa fa-plus-square-o"></i></a> -->
+                                        <a (click)="editProductForm(product)"  style="font-size: 20px; margin-right: 10px;"><i class="fa fa-pencil-square-o"></i></a>
                                         <a  style="font-size: 20px;"><i class="fa fa-trash-o" (click)="remove(product._id)"></i></a>
                                       </td>
                                   </tr>

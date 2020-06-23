@@ -13,7 +13,8 @@ export class ShoppingCartComponent implements OnInit {
   public display: boolean;
   cartItems=[];
 
-	cartTotal = 0
+	cartTotal = 0;
+  cartQuantity = 0;
 
   constructor(private msg: MessengerService,private cartService: CartService) { }
 
@@ -22,8 +23,13 @@ export class ShoppingCartComponent implements OnInit {
     this.loadCartItems();
   }
 
-  payChange(){
+  paymentCart(){
     this.display = true;
+    this.cartService.paymentCart().subscribe(rs => {
+      
+    }, (err) => {
+      console.log(err)
+    });
   }
 
   handleSubscription() {

@@ -1,6 +1,32 @@
 <app-header></app-header>
-<div *ngFor= "let order of ordersList">
-	<div>{{order._id}}</div>
-	<div>{{order.products._id}}</div>
+<div class="col-md-12">
+	<h3 style="padding-top: 15px; font-weight: bold; margin-left: 400px;">DANH SÁCH ĐƠN HÀNG</h3>
 </div>
+<div *ngIf="ordersList.length === 0" class="" style="text-align: center; margin: 30px 255px 40px 300px;">
+	<i class="fa fa-wpforms" style="font-size: 80px;"></i>
+	<h3>Chưa tồn tại hóa đơn </h3>
+	<h3>Vui lòng lựa chọn khóa học và thanh toán.</h3>
+</div>
+<div *ngIf="ordersList.length > 0">
+	<div *ngFor= "let item of ordersList" style="margin: 30px 400px 30px 400px; background-color: #bfbfbf; padding: 20px; border-radius: 10px; font-weight: bold;">
+		<div>Hóa đơn: {{item._id}}</div>
+		<div>Thời gian: {{item.created_at}}</div>
+		<div>Trạng thái: {{item.status}}</div>
+		<button type="button" class="btn btn-warning" (click)="loadDetailOrders(item._id)" style="background-color: #ff8080;">Thông tin</button>
+		<button (click)="remove(item._id)" type="" style="float: right; margin-top: -75px;"><i class="fa fa-times del_cart" ></i></button>
+		<div>
+			<div *ngIf="vieworder">
+				<div *ngFor="let item of listOrderDetail">
+					<tr style="">
+						<td><img style="width: 160px;" [src]="item.product.imageUrl"></td>
+						<td>{{ item.product.name }}</td>
+						<td>{{ item.product.author }}</td>
+						<td>{{ item.product.price }}</td>
+					</tr>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
 <app-footer></app-footer>

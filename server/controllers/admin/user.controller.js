@@ -63,7 +63,7 @@ function update(req, res, next) {
 }
 
 function destroy(req, res, next) {
-    User.findByIdAndDelete(req.params.id)
+    User.findByIdAndDelete(req.params.userId)
         .then(resp => {
             if (!!resp) {
                 res.json({ status: true, error: null });

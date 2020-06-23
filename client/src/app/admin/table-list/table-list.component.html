@@ -61,8 +61,8 @@
                                           {{user.email}}
                                       </td>
                                       <td>
-                                        <a href="" routerLink="" style="font-size: 20px; margin-right: 10px;"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a href="" style="font-size: 20px;"><i class="fa fa-trash-o"></i></a>
+                                        <a  style="font-size: 20px; margin-right: 10px;"><i class="fa fa-pencil-square-o"></i></a>
+                                        <a  style="font-size: 20px;"><i class="fa fa-trash-o" (click)="remove(user._id)"></i></a>
                                       </td>
                                   </tr>
                               </tbody>

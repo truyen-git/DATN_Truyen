@@ -10,7 +10,7 @@ function index(req, res, next) {
 }
 
 function show(req, res, next) {
-    Order.findById(req.params.id)
+    Order.findById(req.params.orderId)
         .then(resp => {
             res.json({ status: true, data: resp, error: null });
         })
@@ -21,7 +21,7 @@ function show(req, res, next) {
 
 function confirm(req, res, next) {
     Order.updateOne(
-        { _id: mongoose.Types.ObjectId(req.params.id) },
+        { _id: mongoose.Types.ObjectId(req.params.orderId) },
         { $set: { status: process.env.STATUS_SUCCESS } })
         .exec()
         .then(resp => {
@@ -32,7 +32,7 @@ function confirm(req, res, next) {
 }
 
 function destroy(req, res, next) {
-    Order.findByIdAndDelete(req.params.id)
+    Order.findByIdAndDelete(req.params.orderId)
         .then(resp => {
             if (!!resp) {
                 res.json({ status: true, error: null });

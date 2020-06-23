@@ -25,7 +25,7 @@ passport.use(
         })
 );
 
-/*passport.use(new FacebookTokenStrategy({
+passport.use(new FacebookTokenStrategy({
   clientID: '2412390069072934',
   clientSecret: 'dca253187e9b89e6741e3c7ab1ddae96'
 },
@@ -33,4 +33,4 @@ function (accessToken, refreshToken, profile, done) {
   User.upsertFbUser(accessToken, refreshToken, profile, function(err, user) {
     return done(err, user);
 });
-}));*/
+}));

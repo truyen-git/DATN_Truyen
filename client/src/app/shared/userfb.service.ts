@@ -1,4 +1,4 @@
-/*import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/toPromise';
 import { AuthHttp } from 'angular2-jwt';
 
@@ -22,7 +22,7 @@ export class UserfbService {
     return new Promise((resolve, reject) => {
       FB.login(result => {
         if (result.authResponse) {
-          return this.http.post(`http://localhost:3000/api/v1/auth/facebook`, {access_token: result.authResponse.accessToken})
+          return this.http.post(`http://localhost:3000/api/auth/facebook`, {access_token: result.authResponse.accessToken})
               .toPromise()
               .then(response => {
                 var token = response.headers.get('x-auth-token');
@@ -51,10 +51,9 @@ export class UserfbService {
 
   getCurrentUser() {
     return new Promise((resolve, reject) => {
-      return this.http.get(`http://localhost:3000/api/v1/auth/me`).toPromise().then(response => {
+      return this.http.get(`http://localhost:3000/api/auth/me`).toPromise().then(response => {
         resolve(response.json());
       }).catch(() => reject());
     });
   }
 }
-*/

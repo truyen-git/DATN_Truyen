@@ -18,6 +18,10 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
+  paymentCart(){
+    return this.http.post(`${environment.apiBaseUrl}/cart/payment`,{});
+  }
+
   getCartItems()/*: Observable<CartItem[]>*/ {
     return this.http.get(`http://localhost:3000/api/cart`);
   }
@@ -30,6 +34,6 @@ export class CartService {
     return this.http.delete(`${environment.apiBaseUrl}/cart/${productId}`);
   }
 
-  
+
 
 }

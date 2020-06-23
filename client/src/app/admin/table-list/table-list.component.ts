@@ -9,6 +9,7 @@ import { User } from '../../main/models/user.model';
 })
 export class TableListComponent implements OnInit {
      userList : User[] = [];
+     teamList = [];
   constructor(private userService : UserService) { }
 
   ngOnInit() {
@@ -18,10 +19,26 @@ export class TableListComponent implements OnInit {
   loadUsers() {
     this.userService.getUsers().subscribe((users: any) => {
       this.userList = users.data;
+      this.teamList = users.data;
       console.log(users);
     }, (err) => {
       console.log(err)
     })
+  }
+
+  remove(userId){
+    /*console.log(productId)*/
+    var r = confirm("Bạn chắc chắn xóa tài khoản này?")
+    if(r == true){
+      this.userService.deleteUsers(userId).subscribe(rs => {
+        /*console.log(this.productItems)*/
+        
+        location.reload();
+        this.teamList = this.teamList.filter(e => e._id != userId)
+      }, (err) => {
+        console.log(err)
+      });
+    }
   }
 
 }

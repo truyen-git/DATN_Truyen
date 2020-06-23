@@ -25,6 +25,9 @@ export class UserService {
   getUsers() {
     return this.http.get(`${environment.apiBaseUrl}/admin/users`);
   }
+  deleteUsers(userId){
+    return this.http.delete(`${environment.apiBaseUrl}/admin/users/${userId}`);
+  }
 
   //HttpMethods
 

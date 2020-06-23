@@ -6,11 +6,12 @@
               <div class="card">
                   <div class="card-header card-header-danger ">
                       <h4 class="card-title ">Danh sách hóa đơn</h4>
+                      
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
                           <table class="table">
-                              <thead class=" text-primary">
+                              <thead class=" text-primary" >
                                   <th>
                                       ID
                                   </th>
@@ -23,11 +24,9 @@
                                   </th>
                                   <th>Time created</th>
                                   <th>Status</th>
-                                  
-                                  
                               </thead>
-                              <tbody *ngFor= "let order of orderList">
-                                  <tr>
+                              <tbody >
+                                  <tr *ngFor= "let order of orderList">
                                       <td>
                                           {{order._id}}
                                       </td>
@@ -42,14 +41,26 @@
                                       <td>{{order.status}}</td>
                                       <td>
                                       
-                                        <a href="" style="font-size: 20px; margin-right: 30px;"><i class="fa fa-trash-o"></i></a>
-                                        <button type="button" class="btn btn-danger" style="margin-right: 30px;">Confim</button>
-                                        <button type="button" class="btn btn-warning">View</button>
+                                        <a  style="font-size: 20px; margin-right: 30px;" ><i class="fa fa-trash-o" (click)="remove(order._id)"></i></a>
+                                        <button type="button" class="btn btn-danger" style="margin-right: 30px;" (click)="confirmOrder(order._id)">Confim</button>
+                                        <button type="button" class="btn btn-warning" (click)="loadDetailOrders(order._id)">View</button>
                                       </td>
                                       
                                   </tr>
+                                  
                               </tbody>
+                              
                           </table>
+                          <div *ngIf="vieworder" style="padding: 0px 0px 0px 300px;">
+                            <div *ngFor="let item of listOrderDetail">
+                              <tr >
+                                <td><img style="width: 160px;" [src]="item.product.imageUrl"></td>
+                                <td style="padding: 0px 30px;">{{ item.product.name }}</td>
+                                <td>{{ item.product.author }}</td>
+                                <td>{{ item.product.price }}</td>
+                              </tr>
+                            </div>
+                          </div>
                       </div>
                   </div>
               </div>

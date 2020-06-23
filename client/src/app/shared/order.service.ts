@@ -15,8 +15,24 @@ export class OrderService {
   	return this.http.get(`${environment.apiBaseUrl}/admin/orders`);
   }
 
-  getOrdersDetail() {
-  	return this.http.get(`${environment.apiBaseUrl}/admin/orders/:id`);
+  confirmOrder(orderId){
+    return this.http.post(`${environment.apiBaseUrl}/admin/orders/confirm/${orderId}`,{});
+  }
+
+  deleteOrders(orderId){
+     return this.http.delete(`${environment.apiBaseUrl}/admin/orders/${orderId}`);
+  }
+
+  deleteOrdersByUser(orderId){
+     return this.http.delete(`${environment.apiBaseUrl}/orders/${orderId}`);
+  }
+
+  getOrdersDetail(orderId) {
+  	return this.http.get(`${environment.apiBaseUrl}/admin/orders/${orderId}`);
+  }
+
+  getOrdersDetailByUser(orderId) {
+    return this.http.get(`${environment.apiBaseUrl}/orders/${orderId}`);
   }
 
   getOrdersByUser(){

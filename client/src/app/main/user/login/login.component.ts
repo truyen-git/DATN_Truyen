@@ -12,7 +12,7 @@ import { UserService } from '../../../shared/user.service';
 })
 export class LogInComponent implements OnInit {
 
-  constructor(private userService: UserService/*,private userfbService: UserfbService*/,private router : Router) { }
+  constructor(private userService: UserService,/*private userfbService: UserfbService,*/private router : Router) { }
 
   model ={
     email :'',
@@ -29,7 +29,11 @@ export class LogInComponent implements OnInit {
     this.userService.login(form.value).subscribe(
       res => {
         this.userService.setToken(res['token']);
-        this.router.navigateByUrl('/userprofile');
+        if(this.model.email == "admin@admin.com" && this.model.password == "123456") {
+          this.router.navigateByUrl('/admin/dashboard');
+        } else {
+          this.router.navigateByUrl('/userprofile');
+        }
       },
       err => {
         this.serverErrorMessages = err.error.message;

@@ -1,4 +1,4 @@
-/*const express = require('express');
+const express = require('express');
 const router = express.Router();
 const Product = require('../models/product.model');
 const fs = require('fs')
@@ -110,4 +110,4 @@ router.get('/:productId', async (req, res) => {
 	}
 })
 
-module.exports = router;*/
+module.exports = router;

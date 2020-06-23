@@ -67,7 +67,7 @@ userSchema.methods.generateJwt = function () {
     });
 }
 
-/*userSchema.set('toJSON', {getters: true, virtuals: true});
+userSchema.set('toJSON', {getters: true, virtuals: true});
 
   userSchema.statics.upsertFbUser = function(accessToken, refreshToken, profile, cb) {
     var that = this;
@@ -95,7 +95,7 @@ userSchema.methods.generateJwt = function () {
         return cb(err, user);
       }
     });
-  };*/
+  };
 
 const userModel = mongoose.model('User', userSchema);
 

@@ -21,7 +21,8 @@ router.get("/products", productController.index)
     .get("/products/:id", productController.show);
 
 router.get("/orders", jwtHelper.verifyJwtToken, orderController.index)
-    .get("/orders/:id", jwtHelper.verifyJwtToken, orderController.show);
+    .get("/orders/:orderId", jwtHelper.verifyJwtToken, orderController.show)
+    .delete("/orders/:orderId", jwtHelper.verifyJwtToken, orderController.destroy);
 
 module.exports = router;
 

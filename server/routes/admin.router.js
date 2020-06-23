@@ -22,11 +22,11 @@ router.get("/users", userController.index)
     .get("/users/:id", userController.show)
     .post("/users", userController.store)
     .put("/users/:id", userController.update)
-    .delete("/users/:id", userController.destroy);
+    .delete("/users/:userId", userController.destroy);
 
 router.get("/orders", orderController.index)
-    .get("/orders/:id", orderController.show)
-    .post("/orders/confirm/:id", orderController.confirm)
-    .delete("/orders/:id", orderController.destroy);
+    .get("/orders/:orderId", orderController.show)
+    .post("/orders/confirm/:orderId", orderController.confirm)
+    .delete("/orders/:orderId", orderController.destroy);
 
 module.exports = router;

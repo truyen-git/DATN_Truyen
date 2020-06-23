@@ -13,7 +13,7 @@ function index(req, res, next) {
 
 function show(req, res, next) {
     Order.find({
-            _id: mongoose.Types.ObjectId(req.params.id),
+            _id: mongoose.Types.ObjectId(req.params.orderId),
             userId: req._id
         })
         .then(resp => {
@@ -24,7 +24,21 @@ function show(req, res, next) {
         });
 }
 
+function destroy(req, res, next) {
+    Order.findByIdAndDelete(req.params.orderId)
+        .then(resp => {
+            if (!!resp) {
+                res.json({ status: true, error: null });
+            } else {
+                res.json({ status: false, error: resp });
+            }
+        }).catch(err => {
+            next(err);
+        })
+}
+
 module.exports = {
     index,
-    show
+    show,
+    destroy
 }
