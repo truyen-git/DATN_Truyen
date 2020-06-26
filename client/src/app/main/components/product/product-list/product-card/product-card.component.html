@@ -11,22 +11,7 @@
         <a *ngIf="!addedToCard"class="btn" (click)="handleAddToCart()">Add to&nbsp;<i class='fa fa-cart-plus'></i></a>
         <a *ngIf="addedToCard" class="btn" >Đã thêm vào &nbsp;<i class='fa fa-cart-plus'></i></a>
     </div>
-    <!-- <div class="card-footer">
-        <div class="row" style="display: flex; justify-content:space-between;margin: 0px; padding: 0px;">
-            <a class="btn" *ngIf="getQuantity() === 0; else updateQuantity" (click)="addToCart()">Add to&nbsp;<i
-                        class='fa fa-cart-plus'></i></a>
-    
-            <ng-template #updateQuantity>
-                <div (click)="removeFromCart()">
-                    <button class="btn"><i class='fa fa-minus'></i></button>
-                </div>
-                <div style="align-self: center;">
-                    {{ getQuantity() }} in Cart
-                </div>
-                <div (click)="addToCart()">
-                    <button class="btn"><i class='fa fa-plus'></i></button>
-                </div>
-            </ng-template>
-        </div>
-    </div> -->
+    <div>
+        <button type="button" class="btn btn-success" (click)="viewProduct(productCard._id)">Xem thông tin</button>
+    </div>
 </div>

@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class IconsComponent implements OnInit {
 	orderList : Order[] = [];
   order = [];
-  listOrderDetail = [];
+  listOrderDetail;
   
   public vieworder: boolean = false;
   
@@ -40,14 +40,18 @@ export class IconsComponent implements OnInit {
   }
 
   loadDetailOrders(orderId){
+    // this.orderService.getOrdersDetail(orderId).subscribe((details: any ) => {
+    //   // this.orderDetail = details.data;
+    //   this.listOrderDetail = details.data.products;
+    //   console.log(details.data);
+    // }, (err) => {
+    //   console.log(err)
+    // })
+
     this.vieworder = !this.vieworder;
-    this.orderService.getOrdersDetail(orderId).subscribe((details: any ) => {
-      // this.orderDetail = details.data;
-      this.listOrderDetail = details.data.products;
-      console.log(details.data);
-    }, (err) => {
-      console.log(err)
-    })
+    if(this.vieworder == false){
+      this.listOrderDetail = [];
+    } else this.listOrderDetail = orderId;
   }
 
   confirmOrder(orderId){

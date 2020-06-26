@@ -18,7 +18,7 @@
 </form>
 <div class="fb-gg">
   <button type="button" style="margin-right: 20px; background-color: #1a1aff !important;" class="btn btn-primary" (click)="fbLogin()"><i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login with facebook</button>
-  <button type="button" class="btn btn-danger" ><i class="fa fa-google"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login with google</button>
+  <button (click)="signInWithGoogle()" type="button" class="btn btn-danger" ><i class="fa fa-google"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login with google</button>
 </div>
 
 <!-- Error message -->

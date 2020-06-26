@@ -22,6 +22,10 @@ export class ProductService {
   	return this.http.delete(`${environment.apiBaseUrl}/admin/products/${productId}`);
   }*/
 
+  getProductDetail(productId) {
+    return this.http.get(`${environment.apiBaseUrl}/products/${productId}`);
+  }
+
   addProduct(product) {
     return this.http.post(`http://localhost:3000/product/create`, product)
   }

@@ -40,13 +40,14 @@ async function store(req, res, next) {
         existsProductInCart = (resp.length > 0);
     });
 
-    await Order.find({ userId, "products": { $elemMatch: { _id: product._id } } }).then(resp => {
+    await Order.find({ userId, status: "pending" ,"products": { $elemMatch: { _id: product._id } } }).then(resp => {
         existsProductInOrder = (resp.length > 0);
     });
 
     if (existsProductInCart || existsProductInOrder) {
         return res.status(433).json({ status: false, error: "Product have buy" });
     }
+    
 
     Cart.create(cartData).then(resp => {
         res.json({ status: true, data: resp, error: null });

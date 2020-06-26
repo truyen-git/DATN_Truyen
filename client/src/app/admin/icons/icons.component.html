@@ -25,8 +25,8 @@
                                   <th>Time created</th>
                                   <th>Status</th>
                               </thead>
-                              <tbody >
-                                  <tr *ngFor= "let order of orderList">
+                              <tbody *ngFor= "let order of orderList">
+                                  <tr >
                                       <td>
                                           {{order._id}}
                                       </td>
@@ -43,24 +43,24 @@
                                       
                                         <a  style="font-size: 20px; margin-right: 30px;" ><i class="fa fa-trash-o" (click)="remove(order._id)"></i></a>
                                         <button type="button" class="btn btn-danger" style="margin-right: 30px;" (click)="confirmOrder(order._id)">Confim</button>
-                                        <button type="button" class="btn btn-warning" (click)="loadDetailOrders(order._id)">View</button>
+                                        <button type="button" class="btn btn-warning" (click)="loadDetailOrders(order.products)">View</button>
                                       </td>
-                                      
                                   </tr>
+                                  <div *ngIf="listOrderDetail == order.products" style="padding: 0px 0px 0px 0px;">
+                                    <div *ngFor="let item of listOrderDetail">
+                                      <tr >
+                                        <td><img style="width: 160px;" [src]="item.product.imageUrl"></td>
+                                        <td style="padding: 0px 30px;">{{ item.product.name }}</td>
+                                        <td>{{ item.product.author }}</td>
+                                        <td>{{ item.product.price }}</td>
+                                      </tr>
+                                    </div>
+                                  </div>
                                   
                               </tbody>
                               
                           </table>
-                          <div *ngIf="vieworder" style="padding: 0px 0px 0px 300px;">
-                            <div *ngFor="let item of listOrderDetail">
-                              <tr >
-                                <td><img style="width: 160px;" [src]="item.product.imageUrl"></td>
-                                <td style="padding: 0px 30px;">{{ item.product.name }}</td>
-                                <td>{{ item.product.author }}</td>
-                                <td>{{ item.product.price }}</td>
-                              </tr>
-                            </div>
-                          </div>
+                          
                       </div>
                   </div>
               </div>

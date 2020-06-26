@@ -11,7 +11,7 @@ function index(req, res, next) {
 }
 
 function show(req, res, next) {
-    Product.findById(req.params.id)
+    Product.findById(req.params.productId)
         .then(resp => {
             res.json({status: true, data: resp, error: null});
         })

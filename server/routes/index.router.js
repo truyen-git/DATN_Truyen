@@ -10,6 +10,7 @@ const jwtHelper = require('../config/jwtHelper');
 
 router.post('/register', ctrlUser.register);
 router.post('/authenticate', ctrlUser.authenticate);
+router.post('/google', ctrlUser.signInGoogle);
 router.get('/userProfile', jwtHelper.verifyJwtToken, ctrlUser.userProfile);
 
 router.get("/cart", cartController.index)
@@ -18,7 +19,7 @@ router.get("/cart", cartController.index)
     .delete("/cart/:id", cartController.destroy);
 
 router.get("/products", productController.index)
-    .get("/products/:id", productController.show);
+    .get("/products/:productId", productController.show);
 
 router.get("/orders", jwtHelper.verifyJwtToken, orderController.index)
     .get("/orders/:orderId", jwtHelper.verifyJwtToken, orderController.show)

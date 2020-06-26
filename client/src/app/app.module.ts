@@ -12,6 +12,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login';
+import { GoogleLoginProvider} from 'angularx-social-login';
 
 import { UserService } from './shared/user.service';
 /*import { UserfbService } from './shared/userfb.service';*/
@@ -75,7 +77,8 @@ import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.
     HttpClientModule,
     ComponentsModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    SocialLoginModule
   ],
   declarations: [
     AppComponent,
@@ -86,6 +89,19 @@ import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.
     LogInComponent*/
   ],
   providers: [{
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '921406465241-inujav2ovvtv9rl2e56t652iqk6a919p.apps.googleusercontent.com'
+            ),
+          }
+        ],
+      } as SocialAuthServiceConfig,
+    },{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true

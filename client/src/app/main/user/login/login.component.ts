@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from "@angular/router";
-
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserService } from '../../../shared/user.service';
 /*import { UserfbService } from '../../../shared/userfb.service';*/
 
@@ -11,8 +12,8 @@ import { UserService } from '../../../shared/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LogInComponent implements OnInit {
-
-  constructor(private userService: UserService,/*private userfbService: UserfbService,*/private router : Router) { }
+public tokenId: string;
+  constructor(private userService: UserService,private authService: SocialAuthService,private http: HttpClient,private router : Router){}
 
   model ={
     email :'',
@@ -40,11 +41,20 @@ export class LogInComponent implements OnInit {
       }
     );
   }
-
-  /*fbLogin() {
-    this.userfbService.fbLogin().then(() => {
-      console.log('User has been logged in');
-      this.router.navigate(['/userprofile']);
-    });  }*/
+  signInWithGoogle(){
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((userData) => {
+      console.log(userData);
+      var tokenId = userData.idToken;
+      this.userService.loginGG(tokenId).subscribe(
+        res => {
+          this.userService.setToken(res['token']);
+          this.router.navigateByUrl('/userprofile');
+        },err => {
+          this.serverErrorMessages = err.error.message;
+        }
+        );
+    }
+    )
+  }
 
 }

@@ -24,6 +24,12 @@ var userSchema = new mongoose.Schema({
       },
       select: false
     },
+    googleProvider: {
+      type: {
+        id: String
+      },
+      select: false
+    },
     money: {
         type: Number,
         default: 0
