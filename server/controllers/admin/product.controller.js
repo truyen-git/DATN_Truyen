@@ -10,13 +10,14 @@ function index(req, res, next) {
 }
 
 function store(req, res, next) {
-    const { name, author, description, price, imageUrl } = req.body;
+    const { name, author, description, price, link, imageUrl } = req.body;
 
     var productData = {
         name,
         author,
         description,
         price,
+        link,
         imageUrl
     };
 
@@ -39,13 +40,14 @@ function show(req, res, next) {
 }
 
 function update(req, res, next) {
-    const { name, author, description, price, imageUrl } = req.body;
+    const { name, author, description, price, link, imageUrl } = req.body;
 
     var productData = {
         name,
         author,
         description,
         price,
+        link,
         imageUrl
     };
 

@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'http://localhost:3000',
+  apiBaseUrl: 'https://apolloenglish.herokuapp.com/api',
+  apiUrl: 'https://apolloenglish.herokuapp.com/api',
+  url: 'https://apolloenglish.herokuapp.com'
 };

@@ -27,15 +27,15 @@ export class ProductService {
   }
 
   addProduct(product) {
-    return this.http.post(`http://localhost:3000/product/create`, product)
+    return this.http.post(`${environment.url}/product/create`, product)
   }
 
   editProduct(product, productId) {
-    return this.http.put(`http://localhost:3000/product/${productId}`, product)
+    return this.http.put(`${environment.url}/product/${productId}`, product)
   }
 
   deleteProduct(productId) {
-    return this.http.delete(`http://localhost:3000/product/${productId}`);
+    return this.http.delete(`${environment.url}/product/${productId}`);
   }
 
 }

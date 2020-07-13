@@ -12,26 +12,31 @@ import { ShoppingItemComponent } from '../../components/shopping-cart/shopping-i
 import { HeaderComponent } from '../../components/header/header.component';
 import { BodyComponent } from '../../components/body/body.component';
 import { HomeComponent } from '../../components/home/home.component';
+import { WhyComponent } from '../../components/why/why.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { UserprofileComponent } from '../../components/userprofile/userprofile.component';
 import { OrdersUserComponent } from '../../components/orders-user/orders-user.component';
+import { AboutComponent } from '../../components/about/about.component';
+import { TogetherComponent } from '../../components/together/together.component';
+import { MomComponent } from '../../components/mom/mom.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import {NgxPaginationModule} from 'ngx-pagination';
 import { HomeLayoutRoutingModule } from './home-layout-routing.module';
 
 
 @NgModule({
   declarations: [LogInComponent,UserComponent, SignUpComponent,HeaderComponent,BodyComponent,HomeComponent,FooterComponent,UserprofileComponent,
-  ProductComponent,ProductListComponent,ProductCardComponent,ProductFilterComponent,ShoppingCartComponent,ShoppingItemComponent,OrdersUserComponent],
+  ProductComponent,ProductListComponent,ProductCardComponent,ProductFilterComponent,ShoppingCartComponent,ShoppingItemComponent,OrdersUserComponent,AboutComponent,WhyComponent,TogetherComponent,MomComponent],
   imports: [
     CommonModule,
     HomeLayoutRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ]
 })
 export class HomeLayoutModule { }

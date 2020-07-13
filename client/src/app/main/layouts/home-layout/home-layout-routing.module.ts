@@ -5,6 +5,10 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { UserprofileComponent } from '../../components/userprofile/userprofile.component';
 import { BodyComponent } from '../../components/body/body.component';
 import { HomeComponent } from '../../components/home/home.component';
+import { WhyComponent } from '../../components/why/why.component';
+import { AboutComponent } from '../../components/about/about.component';
+import { TogetherComponent } from '../../components/together/together.component';
+import { MomComponent } from '../../components/mom/mom.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { ProductComponent } from '../../components/product/product.component';
 import { ProductListComponent } from '../../components/product/product-list/product-list.component';
@@ -27,6 +31,18 @@ const routes: Routes = [
     },
     {
         path: 'home', component: HomeComponent
+    },
+    {
+        path: 'about', component: AboutComponent
+    },
+    {
+        path: 'why', component: WhyComponent
+    },
+    {
+        path: 'together', component: TogetherComponent
+    },
+    {
+        path: 'mom', component: MomComponent
     },
     {
         path: 'productList', component: ProductComponent,

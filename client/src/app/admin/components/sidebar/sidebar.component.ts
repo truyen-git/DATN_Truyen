@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../../shared/user.service';
+import { AdminService } from '../../../shared/admin.service';
 import { Router } from "@angular/router";
 
 declare const $: any;
@@ -10,7 +10,7 @@ declare interface RouteInfo {
     class: string;
 }
 export const ROUTES: RouteInfo[] = [
-    { path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
+    /*{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },*/
    /* { path: '/user-profile', title: 'User Profile',  icon:'person', class: '' },*/
     { path: '/table-list', title: 'Quản lý khách hàng',  icon:'content_paste', class: '' },
     { path: '/typography', title: 'Quản lý khóa học',  icon:'library_books', class: '' },
@@ -28,15 +28,15 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private adminService: AdminService, private router: Router) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
 
   onLogout(){
-  this.userService.deleteToken();
-  this.router.navigate(['/body']);
+  this.adminService.deleteToken();
+  this.router.navigate(['/admin/admin-login']);
   }
 
   isMobileMenu() {

@@ -81,6 +81,7 @@ async function payment(req, res, next) {
             userId,
             products
         });
+
         await Cart.deleteMany({ userId });
     }
 

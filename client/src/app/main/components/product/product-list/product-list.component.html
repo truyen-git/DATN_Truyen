@@ -1,5 +1,8 @@
 <div class="row">
-	<div class="col-md-4" *ngFor= "let product of productList">
-		<app-product-card [productCard]="product"></app-product-card>
+	<div class="col-md-3" *ngFor= "let product of productList | paginate: {itemsPerPage: 8,currentPage:page}">
+		<app-product-card [productCard]="product" (productDetail)="productDetailEvent($event)"></app-product-card>
+	</div>
+	<div style="margin: 10px 0px 20px 420px;">
+		<pagination-controls  (pageChange)="page = $event"></pagination-controls>
 	</div>
 </div>

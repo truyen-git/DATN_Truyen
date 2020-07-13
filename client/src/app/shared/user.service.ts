@@ -39,8 +39,12 @@ export class UserService {
     return this.http.post(environment.apiUrl + '/authenticate', authCredentials,this.noAuthHeader);
   }
 
+  loginAdmin(authCredentials){
+    return this.http.post(environment.apiUrl + '/admin/login', authCredentials,this.noAuthHeader);
+  }
+
   loginGG(tokenId) {
-    return this.http.post(environment.apiUrl + '/google', tokenId,this.noAuthHeader);
+    return this.http.post(environment.apiUrl + '/google', {tokenId},this.noAuthHeader);
   }
 
   getUserProfile() {

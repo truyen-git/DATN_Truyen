@@ -17,12 +17,8 @@ var userSchema = new mongoose.Schema({
        /* required: 'Password can\'t be empty',*/
         minlength: [4, 'Password must be atleast 4 character long']
     },
-    facebookProvider: {
-      type: {
-        id: String,
-        token: String
-      },
-      select: false
+    image:{
+        type: String
     },
     googleProvider: {
       type: {
@@ -71,37 +67,8 @@ userSchema.methods.generateJwt = function () {
     {
         expiresIn: process.env.JWT_EXP
     });
-}
+};
 
-userSchema.set('toJSON', {getters: true, virtuals: true});
-
-  userSchema.statics.upsertFbUser = function(accessToken, refreshToken, profile, cb) {
-    var that = this;
-    return this.findOne({
-      'facebookProvider.id': profile.id
-    }, function(err, user) {
-      // no user was found, lets create a new one
-      if (!user) {
-        var newUser = new that({
-          fullName: profile.displayName,
-          email: profile.emails[0].value,
-          facebookProvider: {
-            id: profile.id,
-            token: accessToken
-          }
-        });
-
-        newUser.save(function(error, savedUser) {
-          if (error) {
-            console.log(error);
-          }
-          return cb(error, savedUser);
-        });
-      } else {
-        return cb(err, user);
-      }
-    });
-  };
 
 const userModel = mongoose.model('User', userSchema);
 

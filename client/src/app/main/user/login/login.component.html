@@ -13,11 +13,9 @@
     <label class="validation-message">Minimum 4 characters.</label>
   </div>
   <input type="submit" style="margin-bottom: 20px !important;" value="Sign In">
-  <a href="/request-reset-password" title="">Forgot Password?</a>
-  <a routerLink="/signup" style="margin-bottom: 20px; ">+ Sign up New Account</a>
+  <a routerLink="/signup" style="margin-bottom: 20px; color: #106fbf;">+ Sign up New Account</a>
 </form>
 <div class="fb-gg">
-  <button type="button" style="margin-right: 20px; background-color: #1a1aff !important;" class="btn btn-primary" (click)="fbLogin()"><i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login with facebook</button>
   <button (click)="signInWithGoogle()" type="button" class="btn btn-danger" ><i class="fa fa-google"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login with google</button>
 </div>
 

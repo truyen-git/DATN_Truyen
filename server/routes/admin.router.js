@@ -24,9 +24,9 @@ router.get("/users", userController.index)
     .put("/users/:id", userController.update)
     .delete("/users/:userId", userController.destroy);
 
-router.get("/orders", orderController.index)
-    .get("/orders/:orderId", orderController.show)
-    .post("/orders/confirm/:orderId", orderController.confirm)
-    .delete("/orders/:orderId", orderController.destroy);
+router.get("/orderadmins", orderController.index)
+    .get("/orderadmins/:orderId", orderController.show)
+    .post("/orderadmins/confirm/:orderId/:userId", orderController.confirm)
+    .delete("/orderadmins/:orderId", orderController.destroy);
 
 module.exports = router;

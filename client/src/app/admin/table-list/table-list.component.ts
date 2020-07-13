@@ -10,6 +10,7 @@ import { User } from '../../main/models/user.model';
 export class TableListComponent implements OnInit {
      userList : User[] = [];
      teamList = [];
+     public searchText; 
   constructor(private userService : UserService) { }
 
   ngOnInit() {

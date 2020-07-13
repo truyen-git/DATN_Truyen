@@ -23,7 +23,7 @@ export class CartService {
   }
 
   getCartItems()/*: Observable<CartItem[]>*/ {
-    return this.http.get(`http://localhost:3000/api/cart`);
+    return this.http.get(`${environment.apiBaseUrl}/cart`);
   }
 
   addProductToCart(product: Product): Observable<any> {

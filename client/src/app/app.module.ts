@@ -14,16 +14,19 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
 import { SocialLoginModule, SocialAuthServiceConfig} from 'angularx-social-login';
 import { GoogleLoginProvider} from 'angularx-social-login';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
 
 import { UserService } from './shared/user.service';
-/*import { UserfbService } from './shared/userfb.service';*/
 import { ProductService } from './shared/product.service';
 import { MessengerService } from './shared/messenger.service';
 import { CartService } from './shared/cart.service';
 import { OrderService } from './shared/order.service';
+import { AdminService } from './shared/admin.service';
 
 
 import { AuthGuard } from './auth/auth.guard';
+import { AdminGuard } from './auth/admin.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 
 import { AppRoutingModule } from './app.routing';
@@ -37,6 +40,10 @@ import { SignUpComponent } from './main/user/signup/signup.component';
 import { UserComponent } from './main/user/user.component';
 import { ProductComponent } from './main/components/product/product.component';
 import { HomeComponent } from './main/components/home/home.component';
+import { AboutComponent } from './main/components/about/about.component';
+import { WhyComponent } from './main/components/why/why.component';
+import { TogetherComponent } from './main/components/together/together.component';
+import { MomComponent } from './main/components/mom/mom.component';
 import { ProductListComponent } from './main/components/product/product-list/product-list.component';
 import { ProductFilterComponent } from './main/components/product/product-filter/product-filter.component';
 import { ProductCardComponent } from './main/components/product/product-list/product-card/product-card.component';
@@ -55,17 +62,10 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.component';
+import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 
  
- /*export function getAuthHttp(http: Http) {
-  return new AuthHttp(new AuthConfig({
-    headerName: 'x-auth-token',
-    noTokenScheme: true,
-    noJwtError: true,
-    globalHeaders: [{'Accept': 'application/json'}],
-    tokenGetter: (() => localStorage.getItem('id_token')),
-  }), http);
-}*/
+
 
 @NgModule({
   imports: [
@@ -78,15 +78,14 @@ import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    HomeLayoutComponent,
-    
-    /*SignUpComponent,
-    LogInComponent*/
+    HomeLayoutComponent
   ],
   providers: [{
       provide: 'SocialAuthServiceConfig',
@@ -96,7 +95,7 @@ import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.
           {
             id: GoogleLoginProvider.PROVIDER_ID,
             provider: new GoogleLoginProvider(
-              '921406465241-inujav2ovvtv9rl2e56t652iqk6a919p.apps.googleusercontent.com'
+              '921406465241-7h2kisp6v9dv804the6i2h2f67kfm2l5.apps.googleusercontent.com'
             ),
           }
         ],
@@ -105,12 +104,7 @@ import { AdminLayoutComponent } from './admin/layouts/admin-layout/admin-layout.
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  },AuthGuard,UserService,/*UserfbService,*/CartService,OrderService,ProductService,MessengerService/*,
-  {
-      provide: AuthHttp,
-      useFactory: getAuthHttp,
-      deps: [Http]
-    }*/],
+  },AdminGuard,AuthGuard,UserService,CartService,OrderService,ProductService,MessengerService,AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

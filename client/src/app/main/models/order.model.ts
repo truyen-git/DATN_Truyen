@@ -12,7 +12,7 @@ export class Order {
 
   constructor(id: number, product: Product, quantity = 0) {
     this.id = id;
-    this.productId = product.id;
+    this.productId = product._id;
     this.productName = product.name;
     this.price = product.price;
     this.quantity = quantity;

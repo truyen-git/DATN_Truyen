@@ -12,15 +12,15 @@ export class OrderService {
   constructor(private http: HttpClient) { }
 
   getOrders() {
-  	return this.http.get(`${environment.apiBaseUrl}/admin/orders`);
+  	return this.http.get(`${environment.apiBaseUrl}/admin/orderadmins`);
   }
 
-  confirmOrder(orderId){
-    return this.http.post(`${environment.apiBaseUrl}/admin/orders/confirm/${orderId}`,{});
+  confirmOrder(orderId, userId){
+    return this.http.post(`${environment.apiBaseUrl}/admin/orderadmins/confirm/${orderId}/${userId}`,{});
   }
 
   deleteOrders(orderId){
-     return this.http.delete(`${environment.apiBaseUrl}/admin/orders/${orderId}`);
+     return this.http.delete(`${environment.apiBaseUrl}/admin/orderadmins/${orderId}`);
   }
 
   deleteOrdersByUser(orderId){
@@ -28,7 +28,7 @@ export class OrderService {
   }
 
   getOrdersDetail(orderId) {
-  	return this.http.get(`${environment.apiBaseUrl}/admin/orders/${orderId}`);
+  	return this.http.get(`${environment.apiBaseUrl}/admin/orderadmins/${orderId}`);
   }
 
   getOrdersDetailByUser(orderId) {

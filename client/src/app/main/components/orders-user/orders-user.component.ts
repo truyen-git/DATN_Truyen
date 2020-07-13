@@ -8,6 +8,7 @@ import { Order } from '../../models/order.model';
 })
 export class OrdersUserComponent implements OnInit {
 	ordersList = [];
+  cartTotal = 0;
   order = [];
   listOrderDetail = [];
   public vieworder: boolean = false;
@@ -29,12 +30,23 @@ loadOrders() {
 
   loadDetailOrders(orderId){
     this.vieworder = !this.vieworder;
-    this.orderService.getOrdersDetailByUser(orderId).subscribe((details: any ) => {
+     if(this.vieworder == false){
+      this.listOrderDetail = [];
+    } else this.listOrderDetail = orderId;
+    /*this.orderService.getOrdersDetailByUser(orderId).subscribe((details: any ) => {
       // this.orderDetail = details.data;
       this.listOrderDetail = details.data[0].products;
       console.log(details.data[0].products);
     }, (err) => {
       console.log(err)
+    })*/
+    this.calcCartTotal();
+  }
+
+  calcCartTotal() {
+    this.cartTotal = 0
+    this.listOrderDetail.forEach(item => {
+      this.cartTotal += (item.product.price)
     })
   }
 

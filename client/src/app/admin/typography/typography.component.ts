@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, HostListener, ViewChild } from '@angular/core';
 import { ProductService } from '../../shared/product.service';
 import { MessengerService } from '../../shared/messenger.service';
 import { Product } from '../../main/models/product.model';
@@ -7,9 +7,10 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 @Component({
   selector: 'app-typography',
   templateUrl: './typography.component.html',
-  styleUrls: ['./typography.component.scss']
+  styleUrls: ['./typography.component.css']
 })
 export class TypographyComponent implements OnInit {
+  page: Number = 1;
  	public change: boolean = false;
  	public editproduct: boolean = false;
  	productList: Product[] = []
@@ -19,6 +20,7 @@ export class TypographyComponent implements OnInit {
   editProductFrm: FormGroup;
   imagePath;
   fileToUpload;
+  public searchText; 
   constructor(private productService : ProductService, private msg : MessengerService, private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -33,6 +35,7 @@ export class TypographyComponent implements OnInit {
       author: ['', [Validators.required]],
       description: ['', [Validators.required]],
       price: ['', [Validators.required]],
+      link: ['', [Validators.required]],
       imageProduct: [null],
     })
   }
@@ -44,6 +47,7 @@ export class TypographyComponent implements OnInit {
       author: [product.author, [Validators.required]],
       description: [product.description, [Validators.required]],
       price: [product.price, [Validators.required]],
+      link: [product.link, [Validators.required]],
       imageProduct: [null],
     })
   }
@@ -72,6 +76,7 @@ export class TypographyComponent implements OnInit {
     formData.append("author", this.editProductFrm.get('author').value);
     formData.append("description", this.editProductFrm.get('description').value);
     formData.append("price", this.editProductFrm.get('price').value);
+    formData.append("link", this.editProductFrm.get('link').value);
 
     this.productService.editProduct(formData, this.productId).subscribe(
       (rs) => {
@@ -110,6 +115,7 @@ export class TypographyComponent implements OnInit {
     formData.append("author", this.addProductFrm.get('author').value);
     formData.append("description", this.addProductFrm.get('description').value);
     formData.append("price", this.addProductFrm.get('price').value);
+    formData.append("link", this.addProductFrm.get('link').value);
 
     this.productService.addProduct(formData).subscribe(
       (rs) => {

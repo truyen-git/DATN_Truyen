@@ -1,16 +1,92 @@
 <app-header></app-header>
 <div class="container">
-<div class="row">
-  <div class="col-md-3">
-    <app-product-filter></app-product-filter>
-  </div>
+	<div class="row">
+		<!-- <div class="col-md-3" *ngIf="isDisplayDetail">
+			<app-product-filter></app-product-filter>
+		</div> -->
 
-  <div class="col-md-9">
-    <app-product-list></app-product-list>
-  </div>
-  <!-- <div class="col-md-2">
-    <app-product-cart></app-product-cart>
-  </div> -->
-</div>
+		<div *ngIf="isDisplayDetail">
+			<app-product-list (productDetail)="productDetailEmit($event)"></app-product-list>
+		</div>
+
+		<div *ngIf="!isDisplayDetail">
+			<div><button (click)="comeBack()" type="button" class="btn btn-default"><i class="fa fa-arrow-left" style="margin-right: 10px;"></i>Quay lại trang danh sách</button></div>
+			<div class="container">
+				<div class="row" style="background: #097890;margin-top: 10px;border-radius: 5px;">
+					<div class="u-course-highlight">
+						<div class="u-detail-block-title">
+							<h1>{{productDetail.name}}</h1>
+							<div class="u-detail-desc" style="padding: 0px 20px;line-height: 30px;">{{productDetail.description}}</div>
+							<div class="u-detail-tea" style="font-weight: bold; margin: 40px 0px 0px 25px;">{{productDetail.author}}</div>
+							<div class="u-detail-rate" >
+								<span class="star-rate" style="margin: 20px 0px 0px 65px;color: #ffcc00;">
+									<i class="fa fa-star co-or"></i>
+									<i class="fa fa-star co-or"></i>
+									<i class="fa fa-star co-or"></i>
+									<i class="fa fa-star co-or"></i>
+									<i class="fa fa-star co-or"></i>
+								</span>
+							</div>
+							<div class="u-detail-students" style="margin: 40px 0px 0px 20px;">
+								<span><i class="fa fa-users" style="margin-right: 10px;"></i>1086 học viên</span>
+							</div>
+						</div>
+					</div>
+					<div class="u-detail-course" style="background: #f2f2f2;">
+						<div class="container">
+							<div class="row" style="margin-top: 15px;">
+								<div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+									<div class="u-detail-block-left" style="">
+										<img [src]="productDetail.imageUrl" alt="" style="width: 730px; margin-bottom: 15px;">
+										<div class="u-learn-what" style="color: color: black; background: #fff; border-radius: 10px; padding-top: 1px;">
+											<h3 style="margin: 25px 0px 10px 15px;font-weight: bold;font-size: 20px;">Bạn học được những gì</h3>
+											<div class="content">
+												<div class="row">
+													<div class="col-sm-6 form-group" style="font-weight: 500;">
+														<div class="title"><i class="fa fa-check" style="color: #00cc00; margin-right: 10px;"></i>Chỉnh những vấn đề phát âm nền tảng</div>
+														<div class="title"><i class="fa fa-check" style="color: #00cc00; margin-right: 10px;"></i>Cải thiện kỹ thuật học từ vựng</div>
+														<div class="title"><i class="fa fa-check" style="color: #00cc00; margin-right: 10px;"></i>Biết rõ bố cục bài thi IELTS</div>
+														<div class="title"><i class="fa fa-check" style="color: #00cc00; margin-right: 10px;"></i>Nắm bắt yêu cầu của từng phần thi</div>
+														<div class="title"><i class="fa fa-check" style="color: #00cc00; margin-right: 10px;"></i>Nâng cao trình sử dụng ngữ pháp </div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="u-des-course" style="background: #fff;border-radius: 10px;margin-top: 15px;padding: 15px; margin-bottom: 15px;">
+											<h2 style="font-weight: bold; font-size: 25px;">Giới thiệu khóa học</h2>
+											<p style="font-weight: 500;">Lớp học dành cho những học viên mới tiếp xúc với IELTS, trình độ các kỹ năng còn thấp, vốn từ vựng, ngữ pháp còn chưa cao, và phát âm còn nhiều khiếm khuyết. Sau khoá học, học viên sẽ hiểu hơn về bố cục bài thi IELTS, cách thức học ôn IELTS, cũng như tìm ra được hướng đi đúng đắn cho sự học tiếng Anh của mình.</p>
+											<p style="font-weight: 500;">Đến với khóa học này cùng Thạc sĩ Bùi Đức Tiến, bạn sẽ nắm vững các bước làm bài thi cũng như vận dụng hiệu quả các tuyệt chiêu để nhắm đến mục tiêu đạt 5.5 - 7.0 điểm IELTS. Với 4 chủ đề chính được biên soạn ứng với 4 phần của bài thi IELTS là Nghe, Nói, Đọc, Viết,  khóa học sẽ giúp bạn tự tin, vững vàng.</p>
+										</div>
+									</div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-12 pdr-b hidden-xs">
+									<div class="u-detail-block-right">
+										<div class="u-detail-block-right">
+											<div class="u-sm-right">
+												<div style="margin-left: 25px;margin-top: 20px">
+												<h2 style="font-weight: bold;color: red; float: left;">{{productDetail.price | currency:'VND':'symbol' }}</h2>
+												<span class="small-price">đ700,000</span>
+												</div>
+												<div><p style="font-weight: bold;margin-top: 50px;font-size: 20px;">Thông tin cơ bản khóa học</p></div>
+												<div class="block-ulti">
+													<ul style="margin-top: 30px 0px 0px 15px; font-size: 18px; padding: 0px;list-style: none;">
+														<li style="" ><i class="fa fa-clock-o" style="margin-right: 10px;"></i>Thời lượng: <p style="font-weight: bold; display: inline;">04 giờ 09 phút</p></li><br>
+														<li style="" ><i class="fa fa-play-circle" style="margin-right: 10px;"></i>Giáo trình: <p style="font-weight: bold;display: inline;">50 bài giảng</p></li><br>
+														<li style="" ><i class="fa fa-history" style="margin-right: 10px;"></i>Sở hữu khóa học trọn đời</li><br>
+														<li style="" ><i class="fa fa-certificate" style="margin-right: 10px;"></i>Cấp chứng nhận hoàn thành</li><br>
+														<li style="" ><i class="fa fa-percent" style="margin-right: 10px;"></i>Giảm thêm 10% khi thanh toán online</li><br>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <app-footer></app-footer>

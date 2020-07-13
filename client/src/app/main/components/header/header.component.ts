@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/user.service';
-/*import { UserfbService } from '../../../shared/userfb.service';*/
 import { CartItem } from '../../models/cart-item';
 import { CartService } from '../../../shared/cart.service';
 
@@ -20,7 +19,7 @@ public currentUser : any = {};
 cartItems=[];
 cartQuantity = 0;
   
-constructor(private userService: UserService,private cartService: CartService, /*private userfbService: UserfbService,*/ private router: Router) { }
+constructor(private userService: UserService,private cartService: CartService, private router: Router) { }
 
 ngOnInit() {
   if(this.userService.getToken() !== '') {
@@ -36,8 +35,7 @@ ngOnInit() {
 
 
   }
-  /*this.userfbService.getCurrentUser().then(profile => this.currentUser = profile)
-  .catch(() => this.currentUser = {});*/
+  
   this.loadCartItems();
   
 }

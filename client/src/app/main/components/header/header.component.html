@@ -1,14 +1,14 @@
 <nav class="navbar-menu navbar-menu__sub">
 	<div class="container">
 		<div class="navbar-holder d-flex align-items-start">
-			<a href="/home" class="navbar-logo mr-auto d-none d-md-block">
-				<img class="img-fluid js-lazy-image js-has-webp lazy-image-loaded" alt="Apollo Tiếng Anh trẻ em" src="../../../assets/img/home/logo.png"  style="height: 150px; width: 150px;">
+			<a routerLink="/home" class="navbar-logo mr-auto d-none d-md-block">
+				<img class="img-fluid js-lazy-image js-has-webp lazy-image-loaded" alt="Apollo Tiếng Anh trẻ em" src="../../../../assets/img/home/junior-logo.png"  style="height: 140px; width: 130px;">
 			</a>
 			<div class="navbar-list d-flex flex-column ml-md-6">
 				
 				<div class="navbar-list-top d-flex flex-wrap align-items-center ml-md-auto my-md-auto">
-					<a href="" style="margin-left: 350px;" class="nav-link" routerLink="/shoppingCart"><i class='fa fa-shopping-cart'></i>&nbsp;&nbsp;Giỏ hàng&nbsp;&nbsp;{{cartQuantity}}</a>
-					<a href="tel:18006655" class="ml-md-auto mr-md-4" style="">
+					<a href="" style="margin-left: 330px; font-weight: bold;" class="nav-link" routerLink="/shoppingCart" ><i class='fa fa-shopping-cart'></i>&nbsp;&nbsp;Giỏ hàng&nbsp;&nbsp;{{cartQuantity}}</a>
+					<a href="tel:18006655" class="ml-md-auto mr-md-4" style="font-weight: bold;">
 						<i class="fa fa-phone mr-1" aria-hidden="true"></i> 1800-6655
 					</a>
 					<a href="" class="has-border mr-md-4">
@@ -17,7 +17,7 @@
 					<a  *ngIf="!userDetails" routerLink="/login" class="has-border">
 						Login
 					</a>
-					<div class="has-border list-bottom-item dropdown" *ngIf="userDetails">
+					<div class="has-border dropdown" *ngIf="userDetails" style="color: #1e1e1e;font-size: 20px;font-weight: bold;padding: 5px 10px;">
 						<img src="../../../../assets/img/user.png" alt="" class="avatar">{{userDetails.fullName.split(' ')[0]}} {{userDetails.fullName.split(' ')[1]}}
 						<div class="dropdown-content">
 							<a href="" class="d-block" routerLink="/ordersUser" >Hóa đơn mua hàng</a>
@@ -31,20 +31,20 @@
 					</div> -->
 				</div>
 				<div class="navbar-list-bottom my-md-auto d-flex flex-wrap justify-content-between">
-					<a class="list-bottom-item" href="#" style="text-decoration: none;">AGLS là gì</a>
-					<a class="list-bottom-item" href="#" style="text-decoration: none;">Vì sao chọn Apollo</a>
+					<a class="list-bottom-item" routerLink="/about" style="text-decoration: none;">AGLS là gì</a>
+					<a class="list-bottom-item" routerLink="/why" style="text-decoration: none;">Vì sao chọn Apollo</a>
 					<a class="list-bottom-item" routerLink="/productList" style="text-decoration: none;">Các khóa học</a>
-					<div class="list-bottom-item dropdown">
+					<div class="list-bottom-item dropdown" routerLink="/together">
 						Đồng hành cùng Apollo
-						<div class="dropdown-content">
+						<!-- <div class="dropdown-content">
 							<a href="#" class="d-block">Trung tâm mới</a>
 							<a href="#" class="d-block">Câu chuyện thành công</a>
 							<a href="#" class="d-block">Tin tức và Sự kiện</a>
 							<a href="#" class="d-block">Hình ảnh hoạt động</a>
 							<a href="#" class="d-block">Education Investor Award</a>
-						</div>
+						</div> -->
 					</div>
-					<a class="list-bottom-item" href="#" style="text-decoration: none;">Góc của mẹ</a>
+					<a class="list-bottom-item" routerLink="/mom" style="text-decoration: none;">Trung tâm mới</a>
 				</div>            
 			</div>
 			<button id="toggle-menu" class="d-block d-md-none ml-auto" type="button">

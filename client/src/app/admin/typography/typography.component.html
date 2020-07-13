@@ -1,12 +1,12 @@
 
-<div class="main-content">
+<div class="main-content" style="font-weight: 500;">
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
 
               <div class="card">
                   <div class="card-header card-header-danger ">
-                      <h4 class="card-title ">Danh sách khóa học</h4>
+                      <h4 class="card-title " style="font-weight: bold;">Danh sách khóa học</h4>
                       <button class="btn btn-default" style="background-color: #ffffff;" (click)="changeTab()">
                         <p style="color: #000000; margin-bottom: 0px;">Thêm +</p>
                       </button>
@@ -27,6 +27,10 @@
                           <div class="form-group">
                             <label class="label-text">Price:</label>
                             <input type="text" class="form-control" id="" formControlName="price">
+                          </div>
+                          <div class="form-group">
+                            <label class="label-text">Link:</label>
+                            <input type="text" class="form-control" id="" formControlName="link">
                           </div>
                           <div class="form-row">
                             <label class="label-text">ImageUrl:</label>
@@ -61,6 +65,10 @@
                             <label class="label-text">Price:</label>
                             <input type="text" class="form-control" id="" formControlName="price">
                           </div>
+                          <div class="form-group">
+                            <label class="label-text">Link:</label>
+                            <input type="text" class="form-control" id="" formControlName="link">
+                          </div>
                           <div class="form-row">
                             <label class="label-text">ImageUrl:</label>
                             <div class="">
@@ -79,25 +87,27 @@
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
+                         <i style="font-size: 20px;font-weight: bold;" class="fa fa-search"></i>&nbsp;&nbsp;<input type="text" [(ngModel)]="searchText" placeholder="Tìm kiếm" style="width: 400px;">
                           <table class="table">
                               <thead class=" text-primary">
-                                  <th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">
                                       ID
                                   </th>
-                                  <th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">
                                       Name
                                   </th>
-                                  <th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">
                                       Author
                                   </th>
-                                  <th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">
                                       Description
                                   </th>
-                                  <th>Price</th>
-                                  <th>imageUrl</th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">Price</th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">Link</th>
+                                  <th style="font-size: 18px; text-align: center; font-weight: bold;">imageUrl</th>
                                   
                               </thead>
-                              <tbody *ngFor= "let product of productItems">
+                              <tbody *ngFor= "let product of productItems | filter:searchText | paginate: {itemsPerPage: 6,currentPage:page}">
                                   <tr>
                                       <td>
                                            {{product._id}}
@@ -111,7 +121,8 @@
                                       <td>
                                           {{product.description}}
                                       </td>
-                                      <td>{{product.price}}</td>
+                                      <td>{{product.price | currency:'VND':'symbol'}}</td>
+                                      <td>{{product.link}}</td>
                                       <td><img style="width: 160px;" [src]="product.imageUrl" class="avatar"></td>
                                       <td>
                                         <!-- <a  (click)="changeTab()" style="font-size: 20px;"><i class="fa fa-plus-square-o"></i></a> -->
@@ -121,6 +132,10 @@
                                   </tr>
                               </tbody>
                           </table>
+                          
+                          <div style="margin-left: 550px;">
+                            <pagination-controls  (pageChange)="page = $event"></pagination-controls>
+                          </div>
                       </div>
                   </div>
               </div>
@@ -128,3 +143,5 @@
       </div>
   </div>
 </div>
+
+

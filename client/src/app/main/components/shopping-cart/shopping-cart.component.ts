@@ -58,7 +58,9 @@ export class ShoppingCartComponent implements OnInit {
     console.log(productId)
     this.cartService.RemoveProductFromCart(productId).subscribe(rs => {
       console.log(this.cartItems)
+      location.reload();
       this.cartItems = this.cartItems.filter(e => e.product._id != productId);
+
     }, (err) => {
       console.log(err)
     });

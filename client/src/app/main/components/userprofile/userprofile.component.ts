@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../shared/user.service';
-/*import { UserfbService } from '../../../shared/userfb.service';*/
 import { Router } from "@angular/router";
 
 @Component({
@@ -11,7 +10,7 @@ import { Router } from "@angular/router";
 export class UserprofileComponent implements OnInit {
   public userDetails;
   public currentUser : any = {};
-  constructor(private userService: UserService, /*private userfbService: UserfbService,*/ private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     
@@ -24,8 +23,7 @@ export class UserprofileComponent implements OnInit {
         
       }
     );
-    /*this.userfbService.getCurrentUser().then(profile => this.currentUser = profile)
-        .catch(() => this.currentUser = {});*/
+   
   }
 
   onLogout(){

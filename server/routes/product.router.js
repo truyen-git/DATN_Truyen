@@ -5,7 +5,7 @@ const fs = require('fs')
 var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' })
 const path = require('path');
-const baseURLImage = 'http://localhost:3000/uploads';
+const baseURLImage = 'https://apolloenglish.herokuapp.com/uploads';
 router.get('/listproducts', async (req, res, next) => {
 	try {
 		let listProducts = await Product.find({});
@@ -32,7 +32,7 @@ router.post('/create', upload.single('imageProduct'), async (req, res) => {
 	try {
 		console.log(req.file)
 
-		const { name, author, description, price } = req.body;
+		const { name, author, description, price, link } = req.body;
 
 		const imgProductUrl = `${baseURLImage}/${req.file.filename}`;
 		
@@ -41,6 +41,7 @@ router.post('/create', upload.single('imageProduct'), async (req, res) => {
 			author: author,
 			description: description,
 			price: price,
+			link: link,
 			imageUrl: imgProductUrl
 		});
 		await product.save();
@@ -73,11 +74,12 @@ router.put('/:productId', upload.single('imageProduct') ,async (req, res) => {
 		if(!product) {
 			res.send("Can't find Product");
 		} else {
-			const { name, author, description, price } = req.body;
+			const { name, author, description, price, link } = req.body;
 			product.name = name;
 			product.author = author;
 			product.description = description;
 			product.price = price;
+			product.link = link;
 			if(req.file) {
 				let imgProductUrl = `${baseURLImage}/${req.file.filename}`;
 				product.imageUrl = imgProductUrl;

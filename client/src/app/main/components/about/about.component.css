@@ -1,0 +1,29 @@
+.a0{
+	padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+    margin-top: -76px;
+}
+.a1{
+	background-color: #209ad6;
+    padding: .9375rem 1.5625rem;
+    font-size: 20px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.25rem;
+    border-radius: 6.25rem;
+    border: #489ace;
+    margin-top: 3.125rem;
+    background-color: #489ace;
+    color: #fff;
+}
+
+.section-facility{
+	background-color: rgba(64,143,194,.92);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: top;
+    position: relative;
+}

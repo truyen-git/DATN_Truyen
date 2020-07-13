@@ -1,17 +1,18 @@
 <div class="card card-fixed-style cc" style="border-radius: 10px;">
-    <img style="border-radius: 10px 10px 0 0;" [src]="productCard.imageUrl" class="card-img-top item">
+    <img style="border-radius: 10px 10px 0 0;width: 100%;height: 150px;" [src]="productCard.imageUrl" class="card-img-top item">
     <div class="card-body card-body-text">
-        <h6 class="card-name">{{ productCard.name }}</h6>
+        <h6 class="card-name" style="font-weight: bold; height: 36px;">{{ productCard.name }}</h6>
         <p class="card-author">{{ productCard.author }}</p>
-        <p class="card-title">{{ productCard.description }}</p>
-        <p class="card-text" style="font-size: 12px;">
+        <!-- <p class="card-title" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">{{ productCard.description }}</p> -->
+        <span class="small-price">đ700,000</span>
+        <p class="card-text" style="color: red;float: right;font-weight: bold;font-size: 18px;">
             {{ productCard.price | currency:'VND':'symbol' }}</p>
     </div>
     <div>
-        <a *ngIf="!addedToCard"class="btn" (click)="handleAddToCart()">Add to&nbsp;<i class='fa fa-cart-plus'></i></a>
-        <a *ngIf="addedToCard" class="btn" >Đã thêm vào &nbsp;<i class='fa fa-cart-plus'></i></a>
+        <a *ngIf="!addedToCard"class="btn btn-info" (click)="handleAddToCart()" style="width: 100%; font-weight: bold; color: #fff; background: #209ad6;">Thêm vào &nbsp;<i class='fa fa-cart-plus'></i></a>
+        <a *ngIf="addedToCard" class="btn" style="width: 100%; font-weight: bold;">Đã thêm vào &nbsp;<i class='fa fa-cart-plus'></i></a>
     </div>
     <div>
-        <button type="button" class="btn btn-success" (click)="viewProduct(productCard._id)">Xem thông tin</button>
+        <button type="button" class="btn btn-success" (click)="viewProduct(productCard._id)" style="width: 100%;">Xem thông tin</button>
     </div>
 </div>

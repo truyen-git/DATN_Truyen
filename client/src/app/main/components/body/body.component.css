@@ -20,10 +20,12 @@
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   text-align: center;
+  font-weight: 500;
 }
 
 .carousel-item:hover .image {
   opacity: 0.8;
+  background: linear-gradient(0deg,rgba(0,0,0,.3),rgba(0,0,0,.3));
 }
 
 .carousel-item:hover .middle {
@@ -134,4 +136,40 @@ h2.section__header {
     border-radius: 100px;
     padding: 10px 25px;
     transition: all .3s ease;
+}
+
+.section {
+    padding: 4.0625rem 0;
+}
+.section-form-footer-juniors {
+    background: url('https://apollo.edu.vn/img/application/juniors/bg-form-footer.png');
+    background-size: cover;
+}
+.section-form-footer-juniors__title {
+    font-size: 26px;
+    color: #fce515;
+}
+.form-control{
+  background: transparent;
+ display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.section-form-footer-juniors .btn-form-juniors {
+    color: #fff;
+    background-color: #209ad6;
+    padding: 10px 40px;
+    border-radius: 100px;
+    -webkit-appearance: none;
+    -webkit-border-radius: 100px;
+    font-size: 1.125rem;
 }

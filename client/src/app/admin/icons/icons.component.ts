@@ -12,6 +12,7 @@ export class IconsComponent implements OnInit {
 	orderList : Order[] = [];
   order = [];
   listOrderDetail;
+  public searchText; 
   
   public vieworder: boolean = false;
   
@@ -54,11 +55,11 @@ export class IconsComponent implements OnInit {
     } else this.listOrderDetail = orderId;
   }
 
-  confirmOrder(orderId){
-    console.log(orderId)
+  confirmOrder(orderId, userId){
+    console.log(userId)
     var r = confirm("Bạn chắc chắn muốn chấp nhận hóa đơn này?")
     if(r == true){
-      this.orderService.confirmOrder(orderId).subscribe(rs => {
+      this.orderService.confirmOrder(orderId, userId).subscribe(rs => {
         /*console.log(this.productItems)*/
         location.reload();
       }, (err) => {

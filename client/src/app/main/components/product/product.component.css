@@ -1,0 +1,62 @@
+.u-course-highlight {
+    background: #097890;
+    color: #fff;
+    padding-bottom: 10px;
+    min-height: 200px;
+    margin-left: 20px;
+}
+
+.u-detail-block-title h1 {
+    font-weight: bold;
+    font-size: 36px;
+    margin-top: 20px;
+    padding: 0px 20px;
+}
+
+.u-detail-desc {
+    margin: 10px 0;
+    line-height: 21px;
+}
+.u-detail-tea {
+    float: left;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+.u-detail-rate {
+    margin: 19px 45px 0 0;
+    float: left;
+}
+.star-rate {
+    float: left;
+    margin-right: 5px;
+    margin-top: 1px;
+}
+.u-detail-students {
+    margin-top: 19px;
+    float: left;
+}
+.u-detail-block-left {
+    margin-bottom: 10px;
+}
+.title{
+	margin-bottom: 10px;
+}
+.u-learn-what .content {
+    padding: 0 15px;
+}
+.block-ulti {
+    color: #555;
+}
+.block-ulti i {
+    font-size: 18px;
+    text-align: center;
+    width: 30px;
+    margin-right: 5px;
+}
+.small-price{
+	font-size: 20px;
+    text-decoration: line-through;
+    margin-left: 10px;
+    display: inline-block;
+    margin-top: 10px;
+}

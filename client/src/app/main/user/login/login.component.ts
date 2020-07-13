@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from "@angular/router";
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from 'angularx-social-login';
 import { UserService } from '../../../shared/user.service';
-/*import { UserfbService } from '../../../shared/userfb.service';*/
+
 
 @Component({
   selector: 'app-login',
@@ -12,8 +12,8 @@ import { UserService } from '../../../shared/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LogInComponent implements OnInit {
-public tokenId: string;
-  constructor(private userService: UserService,private authService: SocialAuthService,private http: HttpClient,private router : Router){}
+public tokenId: String;
+  constructor(private userService: UserService, private authService: SocialAuthService,private http: HttpClient,private router : Router){}
 
   model ={
     email :'',
@@ -22,7 +22,7 @@ public tokenId: string;
   emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   serverErrorMessages: string;
   ngOnInit() {
-    if(this.userService.isLoggedIn() /*|| this.userfbService.isLoggedIn()*/)
+    if(this.userService.isLoggedIn() )
     this.router.navigateByUrl('/userprofile');
   }
 
@@ -56,5 +56,6 @@ public tokenId: string;
     }
     )
   }
+
 
 }

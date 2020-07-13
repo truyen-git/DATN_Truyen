@@ -15,7 +15,7 @@
 				<div class="card-body table-responsive">
 					<table class="table table-hover">
 
-						<tbody>
+						<tbody style="font-weight: 500;">
 							<tr class="table-data-animation" *ngFor="let item of cartItems">
                                 <!-- <app-shopping-item [cartItems]="item"></app-shopping-item> -->
                                 <td style="width: 60px;"><img style="width: 200px;" [src]="item.product.imageUrl" class="avatar"></td>
@@ -38,8 +38,9 @@
 				<div *ngIf="display">
 					<p style="text-align: center; font-size: 25px; font-weight: bold; color: red;">Đã tạo hóa đơn</p>
 					<img style="width: 110%;" src="../../../../assets/img/QRMOMO1.PNG" alt="">
-					<p style="text-align: center; margin-top: 10px; font-size: 18px;">Vui lòng chuyển tổng số tiền: <strong>{{ cartTotal | currency:'VND' }} </strong>bằng tài khoản MOMO của bạn để hóa đơn được hoàn thành.</p>
-					<p style="text-align: center; margin: 10px 0px 100px 0px; font-size: 18px;">Xin chân thành cám ơn!</p>
+					<p style="text-align: center; margin-top: 10px; font-size: 18px; font-weight: 500;">Vui lòng chuyển tổng số tiền: <strong>{{ cartTotal | currency:'VND' }} </strong>bằng tài khoản MOMO của bạn để hóa đơn được hoàn thành.</p>
+					<p style="text-align: center;font-size: 18px;font-weight: 500;">Thông tin yêu cầu: <strong>Tên đăng nhập</strong> + <strong>Email</strong></p>
+					<p style="text-align: center; margin: 10px 0px 100px 0px; font-size: 18px;font-weight: 500;">Xin chân thành cám ơn!</p>
 				</div>
 			</div>
 			

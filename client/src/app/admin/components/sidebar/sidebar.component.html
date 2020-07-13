@@ -1,8 +1,8 @@
 <div class="logo">
-    <a href="/admin" class="simple-text">
+    <a href="/admin" class="simple-text" style="font-weight: bold;">
         <div class="logo-img">
             <img src="/assets/img/angular2-logo-red.png"/>
-        </div>
+        </div>&nbsp;&nbsp;
         Quản trị Admin
     </a>
 </div>
@@ -53,8 +53,8 @@
             </a>
         </li>
     </ul>
-  </div>
-    <ul class="nav">
+  </div >
+    <ul class="nav" style="font-weight: 500;">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" [routerLink]="'/admin/'+[menuItem.path]">
                 <i class="material-icons">{{menuItem.icon}}</i>

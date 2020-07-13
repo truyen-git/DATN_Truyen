@@ -12,18 +12,19 @@
 		<div>Hóa đơn: {{item._id}}</div>
 		<div>Thời gian: {{item.created_at}}</div>
 		<div>Trạng thái: {{item.status}}</div>
-		<button type="button" class="btn btn-warning" (click)="loadDetailOrders(item._id)" style="background-color: #ff8080;">Thông tin</button>
+		<button type="button" class="btn btn-warning" (click)="loadDetailOrders(item.products)" style="background-color: #ff8080;">Thông tin</button>
 		<button (click)="remove(item._id)" type="" style="float: right; margin-top: -75px;"><i class="fa fa-times del_cart" ></i></button>
 		<div>
-			<div *ngIf="vieworder">
-				<div *ngFor="let item of listOrderDetail">
-					<tr style="">
+			<div *ngIf="listOrderDetail == item.products" style="margin-top: 10px;">
+				<div *ngFor="let item of listOrderDetail" style="margin-bottom: 10px;">
+					<tr >
 						<td><img style="width: 160px;" [src]="item.product.imageUrl"></td>
-						<td>{{ item.product.name }}</td>
-						<td>{{ item.product.author }}</td>
+						<td style="padding: 0px 30px;">{{ item.product.name }}</td>
+						<td style="padding-right: 30px;">{{ item.product.author }}</td>
 						<td>{{ item.product.price }}</td>
 					</tr>
 				</div>
+				<div><p style="margin-top: 30px; font-size: 20px; color: #b30000;">Tổng giá: {{ cartTotal | currency:'VND' }}</p></div>
 			</div>
 		</div>
 	</div>

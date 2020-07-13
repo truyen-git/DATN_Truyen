@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ProductService } from '../../../../shared/product.service';
 import { Product } from '../../../models/product.model';
+
 
 @Component({
   selector: 'app-product-list',
@@ -9,7 +10,11 @@ import { Product } from '../../../models/product.model';
 })
 export class ProductListComponent implements OnInit {
 
+  page: Number = 1;
+
 	productList: Product[] = []
+
+  @Output() productDetail = new EventEmitter();
 
   constructor( private productService : ProductService) { }
 
@@ -24,6 +29,10 @@ export class ProductListComponent implements OnInit {
     }, (err) => {
       console.log(err)
     })
+  }
+
+  productDetailEvent(value){
+    this.productDetail.emit(value);
   }
 
 

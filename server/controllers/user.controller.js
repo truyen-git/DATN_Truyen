@@ -48,7 +48,7 @@ module.exports.signInGoogle = async (req, res, next) => {
     try {
         const ticket = await client.verifyIdToken({
             idToken: tokenId,
-            audience: '921406465241-inujav2ovvtv9rl2e56t652iqk6a919p.apps.googleusercontent.com',
+            audience: '921406465241-7h2kisp6v9dv804the6i2h2f67kfm2l5.apps.googleusercontent.com',
         });
         const ggEmail = ticket.payload.email;
         if (ggEmail) {
@@ -60,6 +60,7 @@ module.exports.signInGoogle = async (req, res, next) => {
                 user.fullName = ticket.payload.name;
                 user.email = ggEmail;
                 user.password = "a,ndmn,n,sdasdfam";
+                user.image = ticket.payload.photoUrl;
                 // user.googleProvider.id = ticket.payload.sub;
                 try {
                     const savedUser = await user.save();
@@ -73,50 +74,7 @@ module.exports.signInGoogle = async (req, res, next) => {
         return res.status(400).json(error);
     }
 }
-/*module.exports.signInGoogle = (req, res, next) => {
-  //verify the token using google client
-  return client
-    .verifyIdToken({
-      idToken: req.body.tokenId,
-      audience: '921406465241-inujav2ovvtv9rl2e56t652iqk6a919p.apps.googleusercontent.com'
-    })
-    .then(login => {
-      //if verification is ok, google returns a jwt
-      var payload = login.getPayload();
-      var userid = payload['sub'];
 
-      //check if the jwt is issued for our client
-      var audience = payload.aud;
-      if (audience !== '921406465241-inujav2ovvtv9rl2e56t652iqk6a919p.apps.googleusercontent.com') {
-        throw new Error(
-          'error while authenticating google user: audience mismatch: wanted [' +
-            '921406465241-inujav2ovvtv9rl2e56t652iqk6a919p.apps.googleusercontent.com' +
-            '] but was [' +
-            audience +
-            ']'
-        );
-      }
-      //promise the creation of a user
-      return {
-        name: payload['name'], //profile name
-        pic: payload['picture'], //profile pic
-        id: payload['sub'], //google id
-        email_verified: payload['email_verified'],
-        email: payload['email']
-      };
-
-    })
-    .then(user => {
-        const savedUser = user.save();
-      return res.status(200).json({ "token": savedUser.generateJwt()});
-    })
-    .catch(err => {
-      //throw an error if something gos wrong
-      throw new Error(
-        'error while authenticating google user: ' + JSON.stringify(err)
-      );
-    });
-};*/
 
 module.exports.userProfile = (req, res, next) =>{
     User.findOne({ _id: req._id },

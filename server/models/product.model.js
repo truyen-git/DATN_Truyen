@@ -20,6 +20,9 @@ var productSchema = new mongoose.Schema({
     imageUrl: {
         type: String
     },
+    link: {
+        type: String
+    },
     created_at: Date,
     updated_at: Date,
 });

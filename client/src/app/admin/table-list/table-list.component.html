@@ -1,68 +1,42 @@
-<div class="main-content">
+<div class="main-content" style="font-weight: 500;">
   <div class="container-fluid">
       <div class="row">
           <div class="col-md-12">
               <div class="card">
                   <div class="card-header card-header-danger ">
-                      <h4 class="card-title ">Danh sách khách hàng</h4>
-                      
-                      <div class="container" *ngIf="change" style="background-color: #ffffff;">
-                        <form>
-                          <div class="form-group">
-                            <label  class="label-text">Name:</label>
-                            <input type="text" class="form-control" >
-                          </div>
-                          <div class="form-group">
-                            <label class="label-text">Author:</label>
-                            <input type="text" class="form-control" id="">
-                          </div>
-                          <div class="form-group">
-                            <label class="label-text">Descripton:</label>
-                            <input type="text" class="form-control" id="">
-                          </div>
-                          <div class="form-group">
-                            <label class="label-text">Price:</label>
-                            <input type="text" class="form-control" id="">
-                          </div>
-                          <div class="form-group">
-                            <label class="label-text">ImageUrl:</label>
-                            <input type="text" class="form-control" id="">
-                          </div>
-                        </form>
-                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;">Creat</button>
-                        <button type="button" class="btn btn-secondary" style="background-color:#a6a6a6;">Cancel</button>
-                      </div>
+                      <h4 class="card-title " style="font-weight: bold;">Danh sách khách hàng</h4>
+                    
                   </div>
                   <div class="card-body">
                       <div class="table-responsive">
+                        <i style="font-size: 20px;font-weight: bold;" class="fa fa-search"></i>&nbsp;&nbsp;<input type="text" [(ngModel)]="searchText" placeholder="Tìm kiếm" style="width: 400px;">
                           <table class="table">
-                              <thead class=" text-primary">
-                                  <th>
+                              <thead class=" text-primary" >
+                                  <th style="font-size: 18px; font-weight: bold; text-align: center;">
                                       ID
                                   </th>
-                                  <th>
+                                  <th style="font-size: 18px; font-weight: bold; text-align: center;">
                                       Name
                                   </th>
-                                  <th>
+                                  <th style="font-size: 18px; font-weight: bold; text-align: center;">
                                       Email
                                   </th>
                                 
                                   
                               </thead>
-                              <tbody *ngFor= "let user of userList">
+                              <tbody *ngFor= "let user of userList | filter:searchText">
                                   <tr>
-                                      <td>
+                                      <td style="font-size: 16px; text-align: center;">
                                           {{user._id}}
                                       </td>
-                                      <td>
+                                      <td style="font-size: 16px; text-align: center;">
                                           {{user.fullName}}
                                       </td>
-                                      <td>
+                                      <td style="font-size: 16px; text-align: center;">
                                           {{user.email}}
                                       </td>
                                       <td>
-                                        <a  style="font-size: 20px; margin-right: 10px;"><i class="fa fa-pencil-square-o"></i></a>
-                                        <a  style="font-size: 20px;"><i class="fa fa-trash-o" (click)="remove(user._id)"></i></a>
+                                        <a  style="font-size: 25px;"><i class="fa fa-trash-o" (click)="remove(user._id)"></i></a>
                                       </td>
                                   </tr>
                               </tbody>
